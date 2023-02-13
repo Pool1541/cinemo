@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getMovies } from './services/tmdbAPI';
+import Categories from './components/Categories';
 
 function App() {
   const [movieId, setMovieID] = useState(
@@ -23,13 +24,13 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>{movie.original_title}</h1>
-      <img src={`${baseImageUrl}${imageUrl}`} />
-      <a href={movie.homepage} target='_blank' rel='noreferrer'>
-        HomePage
-      </a>
-      <p>{movie.overview}</p>
-      <button onClick={handleClick}>Click me</button>
+      {/* para el diplay: flex col */}
+      <header></header>
+      <div>
+        <aside></aside>
+        <main></main>
+      </div>
+      <footer></footer>
     </div>
   );
 }
