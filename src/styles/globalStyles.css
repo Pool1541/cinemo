@@ -7,4 +7,14 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: #ccc;
+}
+
+.App > div {
+  margin: auto;
+  max-width: 1600px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
