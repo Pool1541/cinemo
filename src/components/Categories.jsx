@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import { getGenres, getPopular } from '../services/tmdbAPI';
 
 // probando algo
+// nuevo cambio
 
 function Categories() {
   const { data, isLoading, isSuccess } = useQuery({
