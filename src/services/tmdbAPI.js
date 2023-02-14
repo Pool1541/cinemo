@@ -21,8 +21,9 @@ export const getGenres = async () => {
 };
 
 export const getPopular = async () => {
-  const response = await tmdbAPI.get(`
-  /popular?api_key=${apiKey}&language=en-US&page=1`);
+  const response = await tmdbAPI.get(
+    `/popular?api_key=${apiKey}&language=en-US&page=1`
+  );
 
   return response.data;
 };
