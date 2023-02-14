@@ -3,6 +3,7 @@ import { getGenres, getPopular } from '../services/tmdbAPI';
 
 // probando algo
 // nuevo cambio
+// nuevo cambio 03
 
 function Categories() {
   const { data, isLoading, isSuccess } = useQuery({
