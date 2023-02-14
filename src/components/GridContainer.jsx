@@ -25,11 +25,13 @@ export default function GridContainer() {
   };
 
   return (
-    <div className={styles.gridContainer}>
-      {isError || isLoading ? skeletonCards() : succesCards()}
+    <>
+      <div className={styles.gridContainer}>
+        {isError || isLoading ? skeletonCards() : succesCards()}
+      </div>
       <div className={styles.btnContainer}>
         <button className={styles.btnNext}>Siguiente</button>
       </div>
-    </div>
+    </>
   );
 }
