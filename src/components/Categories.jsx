@@ -1,37 +1,40 @@
 import { useQuery } from 'react-query';
-import { getGenres, getPopular } from '../services/tmdbAPI';
-
-// probando algo
-// nuevo cambio
-// nuevo cambio 03
+import { useState } from 'react';
+import { getPopular, getSelectedList } from '../services/tmdbAPI';
+import styles from '../styles/components/categories.module.css';
+import { BsFillHeartFill, BsFillFileBarGraphFill } from 'react-icons/bs';
+import CategoriesList from './CategoriesList';
 
 function Categories() {
-  const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['genres'],
-    queryFn: getGenres,
-  });
+  const [selectionId, setSelectionId] = useState(2);
 
-  const { data: popular } = useQuery({
-    queryKey: ['popular'],
+  const { data: rated } = useQuery({
+    queryKey: ['rated'],
     queryFn: getPopular,
   });
-  console.log(popular);
 
-  const categories = data.genres;
+  const { data: selection, isSuccess: selectionSuccess } = useQuery({
+    queryKey: ['selection'],
+    queryFn: () => getSelectedList(selectionId),
+  });
 
   return (
-    <>
-      <h3>Discover</h3>
-      <div>Populars</div>
+    <div className={styles.categories}>
+      <h4 className={styles.h4}>Discover</h4>
+      <div className={styles.list}>
+        <a className={styles.listItem} href='#'>
+          <BsFillHeartFill className={styles.iconalign} /> Populars
+        </a>
 
-      <h3>Genres</h3>
-      <p>fasd</p>
-      <ul>
-        {categories.map(cat => (
-          <div key={cat.id}>{cat.name}</div>
-        ))}
+        <a className={styles.listItem} href='#'>
+          <BsFillFileBarGraphFill className={styles.iconalign} /> Top Rated
+        </a>
+      </div>
+      <h4 className={styles.h4}>Genres</h4>
+      <ul className={styles.list}>
+        <CategoriesList />
       </ul>
-    </>
+    </div>
   );
 }
 
