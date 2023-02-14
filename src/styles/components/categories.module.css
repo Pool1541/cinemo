@@ -1,0 +1,55 @@
+.categories {
+  margin-left: 3rem;
+}
+
+.listItem:link,
+.listItem:visited {
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.listItem::after {
+  content: '';
+  position: absolute;
+  background-color: #333;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -2px;
+  transition: 0.25s;
+}
+
+.listItem:hover::after,
+.listItem:active::after {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-left: 2rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+}
+
+.flexalign {
+  display: flex;
+  align-items: center;
+}
+
+.iconalign {
+  margin-bottom: -2px;
+}
+
+.activeLink:link,
+.activeLink:visited {
+  text-decoration: none;
+  color: lightcoral;
+}

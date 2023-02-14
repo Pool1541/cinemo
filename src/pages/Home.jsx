@@ -5,6 +5,7 @@ import Header from '../layout/Header';
 import Main from '../layout/Main';
 import GridContainer from '../components/GridContainer';
 import Categories from '../components/Categories';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function Home() {
   return (
