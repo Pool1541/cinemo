@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query';
 import { getGenres, getPopular } from '../services/tmdbAPI';
 
+// probando algo
+
 function Categories() {
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['genres'],
