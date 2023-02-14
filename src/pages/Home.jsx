@@ -3,7 +3,8 @@ import Footer from '../layout/Footer';
 import MainContainer from '../layout/MainContainer';
 import Header from '../layout/Header';
 import Main from '../layout/Main';
-import GridContainer, { Categories } from '../components/GridContainer';
+import GridContainer from '../components/GridContainer';
+import Categories from '../components/Categories';
 
 export default function Home() {
   return (
