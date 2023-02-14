@@ -1,4 +1,4 @@
-import styles from '../styles/gridContainer.module.css';
+import styles from '../styles/components/gridContainer.module.css';
 
 // Probando
 // Probando 2
