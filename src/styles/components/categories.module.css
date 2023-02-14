@@ -1,5 +1,5 @@
 .categories {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .listItem:link,
@@ -7,13 +7,14 @@
   text-decoration: none;
   color: #333;
   position: relative;
+  font-size: 0.75rem;
 }
 
 .listItem::after {
   content: '';
   position: absolute;
   background-color: #333;
-  height: 3px;
+  height: 2px;
   width: 0;
   left: 0;
   bottom: -2px;
@@ -35,7 +36,7 @@
 }
 
 h4 {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   margin: 0.8rem 0;
 }
 
