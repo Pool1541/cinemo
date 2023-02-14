@@ -1,5 +1,9 @@
 .categories {
   margin-left: 2rem;
+  position: sticky;
+  padding-top: 30px;
+  left: 0;
+  top: 0;
 }
 
 .listItem:link,
