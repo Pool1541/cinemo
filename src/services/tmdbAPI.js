@@ -2,27 +2,19 @@ import axios from 'axios';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const tmdbAPI = axios.create({
-  baseURL: `https://api.themoviedb.org/3/movie`,
+  baseURL: `https://api.themoviedb.org/3`,
 });
 
 export const getMovies = async movieId => {
   const response = await tmdbAPI.get(
-    `/${movieId}?api_key=${apiKey}&language=es-spa`
+    `/movie/${movieId}?api_key=${apiKey}&language=es-spa`
   );
-  return response.data;
-};
-
-export const getGenres = async () => {
-  const response = await tmdbAPI.get(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=es-spa`
-  );
-
   return response.data;
 };
 
 export const getPopular = async () => {
   const response = await tmdbAPI.get(
-    `/popular?api_key=${apiKey}&language=es-spa&page=1`
+    `/movie/popular?api_key=${apiKey}&language=es-spa&page=1`
   );
 
   return response.data;
@@ -30,7 +22,7 @@ export const getPopular = async () => {
 
 export const getTopRated = async () => {
   const response = await tmdbAPI.get(
-    `/top_rated?api_key=${apiKey}&language=es-spa&page=1`
+    `/movie/top_rated?api_key=${apiKey}&language=es-spa&page=1`
   );
 
   return response.data;
@@ -38,7 +30,15 @@ export const getTopRated = async () => {
 
 export const getSelectedList = async id => {
   const response = await tmdbAPI.get(
-    `https://api.themoviedb.org/3/movie/${id}/lists?api_key=${apiKey}&language=en-US&page=1`
+    `/movie/${id}/lists?api_key=${apiKey}&language=en-US&page=1`
+  );
+
+  return response.data;
+};
+
+export const getGenres = async () => {
+  const response = await tmdbAPI.get(
+    `/genre/movie/list?api_key=${apiKey}&language=es-spa`
   );
 
   return response.data;

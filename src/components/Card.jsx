@@ -1,7 +1,15 @@
 import styles from '../styles/components/card.module.css';
 import { CiStar } from 'react-icons/ci';
+import { useContext } from 'react';
+import { DataContext } from '../contexts/dataContext';
+import { getTopRated } from '../services/tmdbAPI';
 
 export default function Card({ movie = {} }) {
+  // const { setQueryValues } = useContext(DataContext);
+
+  // function handleClick() {
+  //   setQueryValues({ fn: getTopRated, key: 'peliculas' });
+  // }
   return (
     <a className={styles.container}>
       <div className={styles.image}>
