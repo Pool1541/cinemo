@@ -30,7 +30,7 @@ export const getTopRated = async () => {
 
 export const getSelectedList = async id => {
   const response = await tmdbAPI.get(
-    `/movie/${id}/lists?api_key=${apiKey}&language=en-US&page=1`
+    `/discover/movie?api_key=${apiKey}&language=es-spa&sort_by=popularity.desc&with_genres=${id}&page=1`
   );
 
   return response.data;

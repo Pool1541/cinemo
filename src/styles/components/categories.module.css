@@ -12,6 +12,7 @@
   color: #333;
   position: relative;
   font-size: 0.75rem;
+  margin-bottom: 0.3rem;
 }
 
 .listItem::after {
@@ -23,6 +24,7 @@
   left: 0;
   bottom: -2px;
   transition: 0.25s;
+  display: block;
 }
 
 .listItem:hover::after,
@@ -35,7 +37,7 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.3rem;
   margin-left: 2rem;
 }
 
@@ -51,6 +53,7 @@ h4 {
 
 .iconalign {
   margin-bottom: -2px;
+  margin-right: 2px;
 }
 
 .activeLink:link,

@@ -1,34 +1,40 @@
 import { useQuery } from 'react-query';
-import { useState } from 'react';
-import { getPopular, getSelectedList } from '../services/tmdbAPI';
+import { useState, useContext } from 'react';
+import { getPopular, getTopRated } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { BsFillHeartFill, BsFillFileBarGraphFill } from 'react-icons/bs';
 import CategoriesList from './CategoriesList';
+import { Link } from 'react-router-dom';
+import { DataContext } from '../contexts/dataContext';
 
 function Categories() {
   const [selectionId, setSelectionId] = useState(2);
 
-  const { data: rated } = useQuery({
-    queryKey: ['rated'],
-    queryFn: getPopular,
-  });
+  const { setQueryValues } = useContext(DataContext);
 
-  const { data: selection, isSuccess: selectionSuccess } = useQuery({
-    queryKey: ['selection'],
-    queryFn: () => getSelectedList(selectionId),
-  });
+  function handleClick(string) {
+    if (string === 'popular')
+      setQueryValues({ fn: getPopular, key: 'popular' });
+    else setQueryValues({ fn: getTopRated, key: 'toprated' });
+  }
 
   return (
     <div className={styles.categories}>
       <h4 className={styles.h4}>Discover</h4>
       <div className={styles.list}>
-        <a className={styles.listItem} href='#'>
+        <Link
+          onClick={() => handleClick('popular')}
+          className={styles.listItem}
+        >
           <BsFillHeartFill className={styles.iconalign} /> Populars
-        </a>
+        </Link>
 
-        <a className={styles.listItem} href='#'>
+        <Link
+          onClick={() => handleClick('toprated')}
+          className={styles.listItem}
+        >
           <BsFillFileBarGraphFill className={styles.iconalign} /> Top Rated
-        </a>
+        </Link>
       </div>
       <h4 className={styles.h4}>Genres</h4>
       <ul className={styles.list}>

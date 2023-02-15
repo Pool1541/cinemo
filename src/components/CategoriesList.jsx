@@ -1,18 +1,23 @@
 import { useQuery } from 'react-query';
-import { getGenres } from '../services/tmdbAPI';
+import { getGenres, getSelectedList } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { DataContext } from '../contexts/dataContext';
 
 function CategoriesList() {
   const [selectionId, setSelectionId] = useState(2);
 
+  const { setQueryValues, peliculas } = useContext(DataContext);
+
   const handleClick = id => {
     setSelectionId(id);
-    const activeBtn = document.getElementById(id);
-    activeBtn.classList.add(styles.activeLink);
+    setQueryValues({ fn: () => getSelectedList(id), key: 'selected' });
+    // console.log(peliculas.results);
   };
 
+  //  solicitando data para crear Lista de generos
   const { data, isSuccess } = useQuery({
     queryKey: ['genres'],
     queryFn: getGenres,
@@ -25,14 +30,14 @@ function CategoriesList() {
       <>
         {categories.map(cat => (
           <div key={cat.id}>
-            <a
+            <Link
               id={cat.id}
               onClick={() => handleClick(cat.id)}
-              className={styles.listItem}
-              href={`/${cat.id}`}
+              className={`${styles.listItem}`}
+              // to={`/`}
             >
               <FaRegDotCircle className={styles.iconalign} /> {cat.name}
-            </a>
+            </Link>
           </div>
         ))}
       </>
@@ -41,3 +46,5 @@ function CategoriesList() {
 }
 
 export default CategoriesList;
+
+// , cat.id === selectionId && styles.activeLink
