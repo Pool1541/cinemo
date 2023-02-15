@@ -3,17 +3,12 @@ import Card from './Card';
 import { useQuery } from 'react-query';
 import { getPopular } from '../services/tmdbAPI';
 import SkeletonCard from './SkeletonCard';
+import { useContext } from 'react';
+import { DataContext } from '../contexts/dataContext';
 
 export default function GridContainer() {
-  const {
-    data: movies,
-    isError,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['movies'],
-    queryFn: getPopular,
-  });
+  const { peliculas, isError, isLoading, error, isSuccess } =
+    useContext(DataContext);
 
   const skeletonCards = () => {
     const cards = new Array(20).fill(null);
@@ -21,13 +16,15 @@ export default function GridContainer() {
   };
 
   const succesCards = () => {
-    return movies.results.map(movie => <Card movie={movie} key={movie.id} />);
+    return peliculas?.results?.map(movie => (
+      <Card movie={movie} key={movie.id} />
+    ));
   };
 
   return (
     <>
       <div className={styles.gridContainer}>
-        {isError || isLoading ? skeletonCards() : succesCards()}
+        {isSuccess ? succesCards() : skeletonCards()}
       </div>
       <div className={styles.btnContainer}>
         <button className={styles.btnNext}>Siguiente</button>
