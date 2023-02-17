@@ -13,7 +13,7 @@ function CategoriesList() {
 
   const handleClick = id => {
     setSelectionId(id);
-    setQueryValues({ fn: () => getSelectedList(id), key: 'selected' });
+    setQueryValues({ fn: () => getSelectedList(id), key: ['selected', id] });
     // console.log(peliculas.results);
   };
 
