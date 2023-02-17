@@ -1,5 +1,5 @@
 import styles from '../styles/components/skeletonCard.module.css';
-import { CiStar } from 'react-icons/ci';
+import Rating from './Rating';
 
 export default function SkeletonCard() {
   return (
@@ -8,11 +8,7 @@ export default function SkeletonCard() {
       <div className={styles.info}>
         <h2></h2>
         <div className={styles.rating}>
-          <CiStar />
-          <CiStar />
-          <CiStar />
-          <CiStar />
-          <CiStar />
+          <Rating votes={0} />
         </div>
       </div>
     </a>

@@ -1,7 +1,4 @@
 import styles from '../styles/components/card.module.css';
-import { useContext } from 'react';
-import { DataContext } from '../contexts/dataContext';
-import { getTopRated } from '../services/tmdbAPI';
 import Rating from './Rating';
 
 export default function Card({ movie = {} }) {
@@ -17,7 +14,7 @@ export default function Card({ movie = {} }) {
       </div>
       <div className={styles.info}>
         <h2>{movie.title}</h2>
-        <Rating />
+        <Rating votes={movie.vote_average} />
       </div>
     </a>
   );
