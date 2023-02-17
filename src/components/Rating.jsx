@@ -1,14 +1,6 @@
-import { GiRoundStar } from 'react-icons/gi';
 import styles from '../styles/components/rating.module.css';
+import { setRating } from '../utilities/setRating';
 
-export default function Rating() {
-  return (
-    <div className={styles.container}>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
+export default function Rating({ votes }) {
+  return <div className={styles.container}>{setRating(votes)}</div>;
 }
