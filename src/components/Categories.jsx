@@ -11,14 +11,15 @@ function Categories() {
   const { setQueryValues, modal } = useContext(DataContext);
 
   function handleClick(id) {
+    console.log(id);
     setSelectionId(id);
     if (id === 'popular') setQueryValues({ fn: getPopular, key: ['popular'] });
     else setQueryValues({ fn: getTopRated, key: ['toprated'] });
   }
 
   return (
-    <div className={styles}>
-      <div className={`${modal ? styles.modalOut : styles.ModalIn}`}>
+    <div className={modal ? styles.modalOut : styles.ModalIn}>
+      <div className={styles.categories}>
         <h4 className={styles.h4}>Discover</h4>
         <div className={styles.list}>
           <button
