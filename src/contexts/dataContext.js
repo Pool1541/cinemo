@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { getPopular } from '../services/tmdbAPI';
+import { getPopular } from 'services/tmdbAPI';
 
 export const DataContext = createContext();
 
@@ -11,7 +11,7 @@ export default function DataContextProvider({ children }) {
   // setQueryValues se puede ejecutar desde cualquier componente para cambiar la queryfn y queryKey.
   const [queryValues, setQueryValues] = useState({
     fn: getPopular,
-    key: 'movies',
+    key: ['movies'],
   });
 
   // Al ejecutar getData se le pasan los valores predeterminados de queryValues, estos cambiarán al ejecutar setQueryValues en

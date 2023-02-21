@@ -1,13 +1,10 @@
 .container {
-  height: 20px;
-  padding: 0 5px;
   display: flex;
-  background-color: rgba(117, 117, 117, 0.267);
-  border-radius: 8px;
+  background-color: transparent;
 }
 
 .container div {
-  background-color: inherit;
+  background-color: #888888;
   width: 20px;
   height: 20px;
   object-fit: cover;

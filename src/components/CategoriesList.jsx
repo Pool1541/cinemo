@@ -5,13 +5,14 @@ import { FaRegDotCircle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { DataContext } from '../contexts/dataContext';
 
-function CategoriesList({ selectionID, selectionIDFn }) {
+function CategoriesList({ selectionID }) {
   const { setQueryValues } = useContext(DataContext);
 
   const handleClick = id => {
-    selectionIDFn(id);
-
-    setQueryValues({ fn: () => getSelectedList(id), key: ['selected', id] });
+    setQueryValues({
+      fn: () => getSelectedList({ id }),
+      key: ['selected', id],
+    });
   };
 
   //  solicitando data para crear Lista de generos

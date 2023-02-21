@@ -1,4 +1,4 @@
-import styles from '../styles/components/card.module.css';
+import styles from 'styles/components/card.module.css';
 import Rating from './Rating';
 
 export default function Card({ movie = {} }) {
