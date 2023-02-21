@@ -1,18 +1,32 @@
-import styles from '../styles/components/gridContainer.module.css';
+import styles from 'styles/components/gridContainer.module.css';
 import Card from './Card';
 import { useQuery } from 'react-query';
-import { getPopular } from '../services/tmdbAPI';
+import { getPopular, getSelectedList } from 'services/tmdbAPI';
 import SkeletonCard from './SkeletonCard';
 import { useContext } from 'react';
-import { DataContext } from '../contexts/dataContext';
+import { DataContext } from 'contexts/dataContext';
+import Button from './Button';
 
 export default function GridContainer() {
-  const { peliculas, isError, isLoading, error, isSuccess } =
-    useContext(DataContext);
+  const { peliculas, isSuccess, setQueryValues } = useContext(DataContext);
+
+  const handleNext = () => {
+    setQueryValues({
+      fn: () => getSelectedList({ url: peliculas.next_page }),
+      key: ['selected', peliculas.next_page],
+    });
+  };
+
+  const handlePrev = () => {
+    setQueryValues({
+      fn: () => getSelectedList({ url: peliculas.previous_page }),
+      key: ['selected', peliculas.previous_page],
+    });
+  };
 
   const skeletonCards = () => {
     const cards = new Array(20).fill(null);
-    return cards.map((item, index) => <SkeletonCard key={index} />);
+    return cards.map((_, index) => <SkeletonCard key={index} />);
   };
 
   const succesCards = () => {
@@ -27,7 +41,10 @@ export default function GridContainer() {
         {isSuccess ? succesCards() : skeletonCards()}
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.btnNext}>Siguiente</button>
+        <Button handleClick={handlePrev} currentPage={peliculas.page}>
+          Página {peliculas.page - 1}
+        </Button>
+        <Button handleClick={handleNext}>Página {peliculas.page + 1}</Button>
       </div>
     </>
   );

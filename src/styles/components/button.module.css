@@ -1,0 +1,17 @@
+.btnNext {
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  color: #3d3d3d;
+  background-color: #ffffff;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnNext:hover {
+  background-color: #3d3d3d;
+  color: #ffffff;
+}
