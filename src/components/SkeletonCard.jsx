@@ -1,4 +1,4 @@
-import styles from '../styles/components/skeletonCard.module.css';
+import styles from 'styles/components/skeletonCard.module.css';
 import Rating from './Rating';
 
 export default function SkeletonCard() {
