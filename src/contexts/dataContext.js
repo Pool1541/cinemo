@@ -61,6 +61,9 @@ export default function DataContextProvider({ children }) {
     if (isSuccess) setPeliculas(movies);
   }, [movies]);
 
+  // Modal State:
+  const [modal, setModal] = useState(true);
+
   return (
     <DataContext.Provider
       value={{
@@ -69,6 +72,9 @@ export default function DataContextProvider({ children }) {
         isLoading,
         error,
         isSuccess,
+        queryValues,
+        modal,
+        setModal,
         setQueryValues,
       }}
     >

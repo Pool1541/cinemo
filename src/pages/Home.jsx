@@ -5,11 +5,14 @@ import Header from 'layout/Header';
 import Main from 'layout/Main';
 import GridContainer from 'components/GridContainer';
 import Categories from 'components/Categories';
+import Navbar from 'components/Navbar';
 
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Header>
+        <Navbar />
+      </Header>
       <Main>
         <Aside>
           <Categories />
