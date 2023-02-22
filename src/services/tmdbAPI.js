@@ -41,3 +41,11 @@ export const getGenres = async () => {
 
   return setLinks(response);
 };
+
+export const getSearchResults = async movie => {
+  const response = await tmdbAPI.get(
+    `/search/movie?&query=${movie}&language=es-spa&sort_by=popularity.desc&page=1`
+  );
+
+  return setLinks(response);
+};
