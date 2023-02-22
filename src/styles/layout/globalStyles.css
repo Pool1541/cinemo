@@ -31,3 +31,9 @@ a:visited {
   margin: 0;
   box-sizing: inherit;
 }
+
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 15px;
+  }
+}

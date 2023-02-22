@@ -83,7 +83,7 @@ h4 {
 
 @media (max-width: 1000px) {
   .modalOut {
-    position: absolute;
+    position: sticky;
     left: -1rem;
     top: 0;
     z-index: 1;
@@ -99,8 +99,8 @@ h4 {
     box-shadow: 25px -4px 37px -9px rgba(0, 0, 0, 0.53);
     padding-bottom: 2rem;
     padding-top: 2rem;
-    transition: all 0.5s ease;
-    transform: translateX(-200%);
+    transition: all 0.5s ease-out;
+    transform: translateX(-150%);
   }
 
   .ModalIn {
@@ -120,7 +120,7 @@ h4 {
     box-shadow: 25px -4px 37px -9px rgba(0, 0, 0, 0.53);
     padding-bottom: 2rem;
     padding-top: 2rem;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-out;
     transform: translateX(0);
   }
 }
