@@ -1,5 +1,5 @@
 aside {
-  /* width: 250px; */
+  width: 250px;
 }
 
 @media screen and (max-width: 1000px) {
