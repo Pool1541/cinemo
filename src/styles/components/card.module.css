@@ -50,3 +50,19 @@
   font-size: 0.8rem;
   color: #3d3d3d;
 }
+
+@media screen and (max-width: 1120px) {
+  .container {
+    min-height: 400px;
+  }
+
+  .info {
+    min-height: 103px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    min-height: 300px;
+  }
+}
