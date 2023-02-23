@@ -62,7 +62,7 @@ export default function DataContextProvider({ children }) {
   }, [movies]);
 
   // Modal State:
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   return (
     <DataContext.Provider

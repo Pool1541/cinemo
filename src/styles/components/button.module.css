@@ -2,9 +2,10 @@
   border: none;
   outline: none;
   padding: 10px 25px;
-  color: #3d3d3d;
-  background-color: #ffffff;
-  border: 1px solid #3d3d3d;
+  color: var(--action);
+  background-color: var(--secondary);
+  border: 1px solid var(--action);
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
   border-radius: 8px;
   z-index: 100;
   cursor: pointer;
@@ -12,6 +13,10 @@
 }
 
 .btnNext:hover {
-  background-color: #3d3d3d;
-  color: #ffffff;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btnNext:active {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
 }

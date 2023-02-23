@@ -4,7 +4,7 @@
 }
 
 .container div {
-  background-color: #888888;
+  background-color: var(--text);
   width: 20px;
   height: 20px;
   object-fit: cover;

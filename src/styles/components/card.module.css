@@ -1,10 +1,12 @@
 .container {
   min-height: 500px;
+  max-height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.2s ease;
+  box-shadow: 2px 2px 10px 1px var(--primary-shadow);
 }
 
 .container:hover {
@@ -26,7 +28,10 @@
   background-color: black;
   top: 0;
   right: 0;
-  background: linear-gradient(rgba(255, 255, 255, 0) 68%, #ccc 100%);
+  background: linear-gradient(
+    rgba(255, 255, 255, 0) 68%,
+    var(--secondary) 100%
+  );
 }
 
 .image img {
@@ -48,7 +53,12 @@
 .info h2 {
   font-weight: 400;
   font-size: 0.8rem;
-  color: #3d3d3d;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1120px) {
