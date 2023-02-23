@@ -18,7 +18,7 @@ function Categories() {
   }
 
   return (
-    <div className={modal ? styles.modalOut : styles.ModalIn}>
+    <div className={styles.background}>
       <div className={styles.categories}>
         <h4 className={styles.h4}>Discover</h4>
         <div className={styles.list}>

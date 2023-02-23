@@ -1,15 +1,18 @@
-.categories {
-  padding-left: 40px;
+.background {
   position: sticky;
-  padding-top: 40px;
-  left: 0;
-  top: 0;
-  width: 250px;
+  top: 60px;
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.categories {
+  padding: 15px 0 15px 30px;
+  color: var(--title);
 }
 
 .listItem {
   text-decoration: none;
-  color: #333;
+  color: var(--text);
   position: relative;
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
@@ -22,7 +25,7 @@
 .listItem::after {
   content: '';
   position: absolute;
-  background-color: #333;
+  background-color: var(--text);
   height: 2px;
   width: 0;
   left: 0;
@@ -61,13 +64,13 @@ h4 {
 /* active link */
 
 .activeLink {
-  color: lightcoral;
+  color: var(--contrast);
 }
 
 .activeLink::after {
   content: '';
   position: absolute;
-  background-color: lightcoral;
+  background-color: var(--contrast);
   height: 2px;
   width: 0;
   left: 0;
@@ -82,45 +85,8 @@ h4 {
 }
 
 @media (max-width: 1000px) {
-  .modalOut {
-    position: sticky;
-    left: -1rem;
-    top: 0;
-    z-index: 1;
-    background-color: #fff;
-    width: 60%;
-    height: 100vh;
-    overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    align-items: center;
-    box-shadow: 25px -4px 37px -9px rgba(0, 0, 0, 0.53);
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    transition: all 0.5s ease-out;
-    transform: translateX(-150%);
-  }
-
-  .ModalIn {
-    position: fixed;
-    left: -1rem;
-    top: 0;
-    z-index: 1;
-    background-color: #fff;
-    width: 60%;
-    height: 100vh;
-    overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    align-items: center;
-    box-shadow: 25px -4px 37px -9px rgba(0, 0, 0, 0.53);
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    transition: all 0.5s ease-out;
-    transform: translateX(0);
+  .background {
+    height: 100%;
+    overflow: auto;
   }
 }
