@@ -41,10 +41,20 @@ export default function GridContainer() {
         {isSuccess ? succesCards() : skeletonCards()}
       </div>
       <div className={styles.btnContainer}>
-        <Button handleClick={handlePrev} currentPage={peliculas.page}>
+        <Button
+          handleClick={handlePrev}
+          currentPage={peliculas.page}
+          prev={true}
+        >
           Página {peliculas.page - 1}
         </Button>
-        <Button handleClick={handleNext}>Página {peliculas.page + 1}</Button>
+        <Button
+          handleClick={handleNext}
+          currentPage={peliculas.page}
+          maxPages={peliculas.total_pages}
+        >
+          Página {peliculas.page + 1}
+        </Button>
       </div>
     </>
   );
