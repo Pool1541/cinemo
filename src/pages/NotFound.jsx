@@ -2,7 +2,7 @@ import styles from '../styles/components/notFound.module.css';
 import { Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 
-export const NotFound = () => {
+function NotFound() {
   return (
     <div className={styles.hero}>
       <h1 className={styles.bigText}>Oops!</h1>
@@ -14,4 +14,6 @@ export const NotFound = () => {
       </Link>
     </div>
   );
-};
+}
+
+export default NotFound;
