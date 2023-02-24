@@ -1,12 +1,14 @@
 :root {
   --primary: #1c252f;
   --primary-shadow: #1c252f3f;
+  --primary-transparent: #1c252fa9;
   --secondary: #213c54;
   --title: #e2ebf8;
   --text: #d0dbeb;
   --text-hover: #b9c3d12a;
   --action: #00c6b6;
   --contrast: #bf8620;
+  --selected: #007c80;
 }
 
 * {
@@ -31,10 +33,18 @@ body {
   flex-direction: column;
 }
 
+.App > .login {
+  min-height: calc(100vh - 60px);
+}
+
 a,
 a:visited {
   text-decoration: none;
   color: unset;
+}
+
+*::selection {
+  background-color: var(--selected);
 }
 
 *::before,
