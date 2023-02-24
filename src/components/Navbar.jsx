@@ -17,6 +17,11 @@ function NavbarButton() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!text || text.startsWith(' ')) {
+      return setText('');
+    }
+
     setQueryValues({
       fn: () => getSearchResults(text.replace(/ /g, '+')),
       key: ['searchResults', text],

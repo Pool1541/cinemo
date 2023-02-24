@@ -1,18 +1,65 @@
 .container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 3rem;
   height: 100%;
   color: var(--title);
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.text {
-  font-size: 12px;
+.container > p {
+  font-size: 0.8rem;
+}
+
+.appTitle {
+  font-size: 3rem;
 }
 
 .link {
-  font-size: 13px;
-  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
+.aboutContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  color: var(--title);
+  padding: 0 1rem;
+}
+
+.aboutLink {
   color: var(--action);
+  margin-left: 1rem;
+  font-size: 12px;
+}
+
+.aboutText {
+  font-size: 12px;
+}
+
+.icon {
+  color: var(--action);
+  padding-bottom: -3px;
+}
+
+.btn {
+  background-color: var(--secondary);
+  color: var(--action);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 1px solid var(--action);
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn:active {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
 }
