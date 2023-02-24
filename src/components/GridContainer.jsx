@@ -52,6 +52,7 @@ export default function GridContainer() {
           handleClick={handleNext}
           currentPage={peliculas.page}
           maxPages={peliculas.total_pages}
+          next={true}
         >
           Página {peliculas.page + 1}
         </Button>

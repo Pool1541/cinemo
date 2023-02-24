@@ -68,7 +68,7 @@
   color: inherit;
   border: none;
   padding: 5px 35px 5px 15px;
-  border-radius: 100px;
+  border-radius: 5px;
   width: 100%;
   font-size: 0.8rem;
   transition: all 0.2s ease-in;

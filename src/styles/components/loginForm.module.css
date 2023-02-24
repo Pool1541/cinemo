@@ -1,5 +1,125 @@
-.loginContainer {
+#background {
+  position: absolute;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #0000004d;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 
-.form {
+.loginContainer {
+  width: 90%;
+  max-width: 800px;
+  min-height: 50vh;
+  margin: auto;
+  overflow: hidden;
+  background: var(--primary);
+  border-radius: 8px;
+  box-shadow: 21px 20px 27px -1px rgba(0, 0, 0, 0.123);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.formBox {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--title);
+}
+
+.title h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputs input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--secondary);
+}
+
+.inputs input:focus {
+  outline: 2px solid var(--text);
+}
+
+.registered {
+  text-align: center;
+}
+
+.registered p,
+.registered a {
+  font-size: 0.7rem;
+}
+
+.registered a {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: var(--action);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.buttons button {
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid var(--text);
+  background-color: var(--secondary);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+  border: 1px solid var(--action);
+  color: var(--action);
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 900px) {
+  .loginContainer {
+    max-width: 500px;
+    grid-template-columns: unset;
+    background-color: var(--primary-transparent);
+    backdrop-filter: blur(3px);
+  }
+
+  .formBox {
+    padding: 40px;
+  }
+
+  .imageBox {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .formBox {
+    padding: 25px 20px;
+  }
 }
