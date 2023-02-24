@@ -6,6 +6,7 @@ import Main from 'layout/Main';
 import GridContainer from 'components/GridContainer';
 import Categories from 'components/Categories';
 import Navbar from 'components/Navbar';
+import { AboutPage } from 'components/AboutPage';
 
 export default function Home() {
   return (
@@ -21,7 +22,9 @@ export default function Home() {
           <GridContainer />
         </MainContainer>
       </Main>
-      <Footer></Footer>
+      <Footer>
+        <AboutPage />
+      </Footer>
     </div>
   );
 }
