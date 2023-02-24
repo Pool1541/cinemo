@@ -6,9 +6,10 @@ export default function Button({
   children,
   maxPages,
   prev,
+  next,
 }) {
   if (prev && currentPage <= 1) return <div></div>;
-  if (currentPage === maxPages) return <div></div>;
+  if (next && currentPage === maxPages) return <div></div>;
   return (
     <button onClick={handleClick} className={styles.btnNext}>
       {children}

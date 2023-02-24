@@ -1,0 +1,26 @@
+.btnHome {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 40px;
+  align-items: center;
+}
+
+.link {
+  color: var(--action) !important;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text) !important;
+}
+
+@media screen and (max-width: 900px) {
+  .login {
+    background: url('assets/banner.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
