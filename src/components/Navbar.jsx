@@ -4,10 +4,11 @@ import { DataContext } from '../contexts/dataContext';
 import { BiSearch } from 'react-icons/bi';
 import { getSearchResults } from '../services/tmdbAPI';
 import { Link } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
-function NavbarButton() {
+function NavbarButton({ user }) {
   const { modal, setModal, setQueryValues } = useContext(DataContext);
-
+  console.log(user);
   const [text, setText] = useState('');
 
   function handleClick(e) {
@@ -50,9 +51,13 @@ function NavbarButton() {
         </button>
       </form>
       <div className={styles.loginContainer}>
-        <Link href='#' className={styles.loginBtn} to='/login'>
-          Iniciar sesión
-        </Link>
+        {user ? (
+          <UserProfile user={user} />
+        ) : (
+          <Link className={styles.loginBtn} to='/login'>
+            Iniciar sesión
+          </Link>
+        )}
       </div>
     </div>
   );
