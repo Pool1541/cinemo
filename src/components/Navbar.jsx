@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 
 function NavbarButton({ user }) {
-  const { modal, setModal, setQueryValues } = useContext(DataContext);
+  const { modal, setModal, setQueryValues, setMovie } = useContext(DataContext);
   const [text, setText] = useState('');
 
   function handleClick(e) {
     setModal(!modal);
+
     e.currentTarget.classList.toggle(styles.toggle);
   }
 
@@ -27,6 +28,7 @@ function NavbarButton({ user }) {
       key: ['searchResults', text],
     });
     setText('');
+    setMovie('');
   }
 
   return (

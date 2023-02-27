@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  flex: 1 1 auto;
+  margin-bottom: 40%;
+  width: 100%;
+  padding: 4rem;
+}
+
+.infoContainer {
+  width: 60%;
+  color: var(--title);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 5rem;
+}
+
+.infoContainer p > span {
+  color: var(--primary);
+  margin-right: 1rem;
+}
+
+.title {
+  font-size: 2.2rem;
+}
+
+/* storyline */
+
+.poster {
+  width: 30%;
+  height: 100%;
+}
+
+.storylineCotnainer {
+  display: flex;
+  background-color: aquamarine;
+}
+
+.storylineInfo {
+  margin: 0 2rem;
+}
+
+.storylineList {
+  list-style: none;
+}
+
+.storylineItem {
+  margin-bottom: 0.7rem;
+  display: flex;
+}
+
+.genres {
+  display: flex;
+  gap: 0.5rem;
+}

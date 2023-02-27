@@ -1,21 +1,9 @@
 import { useQuery } from 'react-query';
-import { getGenres, getSelectedList } from '../services/tmdbAPI';
+import { getGenres } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
-import { useContext } from 'react';
-import { DataContext } from '../contexts/dataContext';
 
-function CategoriesList({ selectionID, selectionIDFn }) {
-  const { setQueryValues } = useContext(DataContext);
-
-  const handleClick = id => {
-    selectionIDFn(id);
-    setQueryValues({
-      fn: () => getSelectedList({ id }),
-      key: ['selected', id],
-    });
-  };
-
+function CategoriesList({ handleClick, selectionID }) {
   //  solicitando data para crear Lista de generos
   const { data, isSuccess } = useQuery({
     queryKey: ['genres'],
@@ -28,7 +16,7 @@ function CategoriesList({ selectionID, selectionIDFn }) {
     return (
       <>
         {categories.map(cat => (
-          <div key={cat.id}>
+          <li className={styles.item} key={cat.id}>
             <button
               id={cat.id}
               onClick={() => handleClick(cat.id)}
@@ -38,7 +26,7 @@ function CategoriesList({ selectionID, selectionIDFn }) {
             >
               <FaRegDotCircle className={styles.iconalign} /> {cat.name}
             </button>
-          </div>
+          </li>
         ))}
       </>
     );

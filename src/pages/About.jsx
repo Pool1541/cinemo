@@ -13,16 +13,17 @@ const About = () => {
       </p>
       <p>Version: 1.0.0</p>
       <p>
-        Creado por: Pool Llerena
+        Creado por:{' '}
         <Link
           className={styles.link}
           to='https://github.com/Pool1541'
           target='_blank'
         >
+          Pool Llerena
           <AiFillGithub className={styles.icon} />
         </Link>
-        Alvaro Cayo
         <Link to='https://github.com/albored' target='_blank'>
+          Alvaro Cayo
           <AiFillGithub className={styles.icon} />
         </Link>
       </p>
