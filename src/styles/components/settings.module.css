@@ -1,0 +1,136 @@
+.container {
+  flex-grow: 1;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.settingsSection {
+  border-top: 2px solid var(--text);
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+}
+
+.title {
+  width: 40%;
+  color: var(--title);
+  display: flex;
+  align-items: center;
+}
+
+.title h2,
+.title label {
+  font-size: 1.4rem;
+}
+
+.settings {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.form {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.formSection {
+  border-top: 2px solid var(--text);
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+}
+
+.formSection input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--secondary);
+}
+
+.disable {
+  background-color: var(--text-hover) !important;
+}
+
+.formSection input:focus {
+  outline: 2px solid var(--text);
+}
+
+.profilePhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--action);
+}
+
+.profilePhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fileInput {
+  display: none;
+}
+
+.button {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  color: var(--action);
+  background-color: var(--secondary);
+  border: 1px solid var(--action);
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.button:active {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 600px) {
+  .formSection {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .settingsSection {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .settings {
+    flex-direction: column;
+  }
+
+  .title {
+    text-align: center;
+    width: 100%;
+  }
+
+  .title h2 {
+    width: 100%;
+  }
+
+  .formSection input {
+    align-self: flex-start;
+    width: 100%;
+  }
+}

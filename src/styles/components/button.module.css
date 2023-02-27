@@ -7,7 +7,6 @@
   border: 1px solid var(--action);
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
   border-radius: 8px;
-  z-index: 100;
   cursor: pointer;
   transition: all 0.2s ease;
 }

@@ -12,7 +12,7 @@ aside {
     max-width: 300px;
     height: calc(100vh - 60px);
     position: fixed;
-    z-index: 110;
+    z-index: 1;
     background-color: var(--primary);
     transform: translateX(calc(-100vw - 300px));
     transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);

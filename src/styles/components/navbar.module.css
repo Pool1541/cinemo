@@ -108,6 +108,7 @@
   font-size: 0.8rem;
   text-align: center;
   transition: color 0.2s ease;
+  color: var(--action);
 }
 
 .loginBtn:hover {
