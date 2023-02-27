@@ -28,7 +28,7 @@
   padding: 30px 25px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-around;
   color: var(--title);
 }
 
@@ -62,7 +62,7 @@
 
 .registered p,
 .registered a {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .registered a {
@@ -99,6 +99,13 @@
   object-fit: cover;
   pointer-events: none;
   user-select: none;
+}
+
+.error {
+  height: 0.8rem;
+  color: var(--error);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 900px) {

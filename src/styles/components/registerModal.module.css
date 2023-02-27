@@ -66,5 +66,14 @@
 }
 
 .form .closeBtn:hover svg {
-  color: rgb(202, 67, 67);
+  color: var(--error);
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.8rem;
+  height: 0.8rem;
+  text-align: center;
+  position: relative;
+  top: 3px;
 }

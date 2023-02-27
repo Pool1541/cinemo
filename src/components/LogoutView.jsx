@@ -14,7 +14,7 @@ export default function LogoutView() {
   return (
     <AuthProvider
       onUserLoggedIn={handleUserLoggedIn}
-      onUserNotLoggetIn={handleUserNotLoggedIn}
+      onUserNotLoggedIn={handleUserNotLoggedIn}
     ></AuthProvider>
   );
 }

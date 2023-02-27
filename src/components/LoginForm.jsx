@@ -1,10 +1,12 @@
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { auth } from 'services/firebase';
+import { auth, loginUser } from 'services/firebase';
 import styles from 'styles/components/loginForm.module.css';
+import Spinner from './Spinner';
 
 export default function LoginForm() {
+  const errorMessage = useRef();
   const provider = new GoogleAuthProvider();
 
   async function loginWithGoogle() {
@@ -15,6 +17,22 @@ export default function LoginForm() {
     }
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    if (data.email && data.password)
+      try {
+        const userCredential = await loginUser({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (error) {
+        errorMessage.current.innerText = error.code.split('/')[1];
+      }
+    else errorMessage.current.innerText = 'Completa todos los campos';
+  }
+
   function handleRegisterModal() {
     const Modal = lazy(() => import('./RegisterModal'));
     const background = document.createElement('div');
@@ -23,7 +41,7 @@ export default function LoginForm() {
       document.querySelector('#root').appendChild(background)
     );
     root.render(
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <Modal root={root} id={styles.background} />
       </Suspense>
     );
@@ -31,16 +49,17 @@ export default function LoginForm() {
 
   return (
     <div className={styles.loginContainer}>
-      <form className={styles.formBox}>
+      <form className={styles.formBox} onSubmit={handleSubmit}>
         <div className={styles.title}>
           <h1>Iniciar sesión</h1>
         </div>
         <div className={styles.inputs}>
           <label htmlFor='loginEmail'>Correo electrónico</label>
-          <input type='text' id='loginEmail' />
+          <input type='text' id='loginEmail' name='email' />
           <label htmlFor='loginPassword'>Contraseña</label>
-          <input type='password' id='loginPassword' />
+          <input type='password' id='loginPassword' name='password' />
         </div>
+        <div className={styles.error} ref={errorMessage}></div>
         <div className={styles.registered}>
           <p>
             ¿Aún no tienes una cuenta?{' '}
@@ -48,7 +67,7 @@ export default function LoginForm() {
           </p>
         </div>
         <div className={styles.buttons}>
-          <button type='button'>Iniciar sesion</button>
+          <button type='submit'>Iniciar sesion</button>
           <button type='button' onClick={loginWithGoogle}>
             Ingresar con Google
           </button>

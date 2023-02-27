@@ -33,7 +33,11 @@ function NavbarButton({ user }) {
 
   return (
     <div className={styles.navbar}>
-      <button onClick={handleClick} className={styles.navButton}>
+      <button
+        onClick={handleClick}
+        className={styles.navButton}
+        title='Mostrar categorias'
+      >
         <div className={styles.linea1}></div>
         <div className={styles.linea2}></div>
         <div className={styles.linea3}></div>
@@ -47,7 +51,7 @@ function NavbarButton({ user }) {
           className={styles.search}
           placeholder='Buscar'
         />
-        <button type='submit' className={styles.btnSearch}>
+        <button type='submit' className={styles.btnSearch} title='buscar'>
           <BiSearch />
         </button>
       </form>
