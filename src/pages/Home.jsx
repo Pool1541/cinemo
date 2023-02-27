@@ -27,7 +27,7 @@ export default function Home() {
     return (
       <AuthProvider
         onUserLoggedIn={handleUserLoggedIn}
-        onUserNotLoggetIn={handleUserNotLoggedIn}
+        onUserNotLoggedIn={handleUserNotLoggedIn}
       ></AuthProvider>
     );
   return (

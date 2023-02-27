@@ -1,5 +1,6 @@
 import AuthProvider from 'components/AuthProvider';
 import LoginForm from 'components/LoginForm';
+import Footer from 'layout/Footer';
 import Header from 'layout/Header';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,7 +28,7 @@ export default function Login() {
     return (
       <AuthProvider
         onUserLoggedIn={handleUserLoggedIn}
-        onUserNotLoggetIn={handleUserNotLoggedIn}
+        onUserNotLoggedIn={handleUserNotLoggedIn}
       ></AuthProvider>
     );
 

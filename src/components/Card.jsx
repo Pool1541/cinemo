@@ -10,7 +10,11 @@ export default function Card({ movie = {} }) {
   return (
     <a className={styles.container}>
       <div className={styles.image}>
-        <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+        <img
+          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+          alt={movie.title}
+          loading='lazy'
+        />
       </div>
       <div className={styles.info}>
         <h2>{movie.title}</h2>

@@ -1,0 +1,8 @@
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  flex-grow: 1;
+  padding: 40px;
+  background-color: var(--primary-transparent);
+  border-radius: 8px;
+}

@@ -5,10 +5,13 @@
   --secondary: #213c54;
   --title: #e2ebf8;
   --text: #d0dbeb;
+  --text-transparent: #d0dbeb42;
   --text-hover: #b9c3d12a;
   --action: #00c6b6;
+  --action-transparent: #00c6b5d2;
   --contrast: #bf8620;
   --selected: #007c80;
+  --error: rgb(253, 85, 85);
 }
 
 * {
@@ -40,7 +43,7 @@ body {
 a,
 a:visited {
   text-decoration: none;
-  color: unset;
+  /* color: unset; */
 }
 
 *::selection {

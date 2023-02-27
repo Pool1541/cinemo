@@ -12,6 +12,7 @@
   cursor: pointer;
   background-color: transparent;
   overflow: hidden;
+  border: 2px solid var(--action);
 }
 
 .profileBtn img {
