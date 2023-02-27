@@ -5,6 +5,7 @@ import { getPopular } from 'services/tmdbAPI';
 export const DataContext = createContext();
 
 export default function DataContextProvider({ children }) {
+  const [movieId, setMovieId] = useState();
   // peliculas almacena el objeto que retorna useQuery
   const [peliculas, setPeliculas] = useState([]);
   // queryValues almacena la queryfn y querykey que se pasará como parámetro a la función getData.
@@ -64,6 +65,9 @@ export default function DataContextProvider({ children }) {
   // Modal State:
   const [modal, setModal] = useState(false);
 
+  // movieInfo state:
+  const [movie, setMovie] = useState();
+
   return (
     <DataContext.Provider
       value={{
@@ -74,8 +78,12 @@ export default function DataContextProvider({ children }) {
         isSuccess,
         queryValues,
         modal,
+        movieId,
+        movie,
         setModal,
         setQueryValues,
+        setMovieId,
+        setMovie,
       }}
     >
       {children}

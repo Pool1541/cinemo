@@ -1,7 +1,3 @@
-// import Home from './pages/Home';
-// import Login from 'pages/Login';
-// import { NotFound } from 'pages/NotFound';
-// import { About } from 'pages/About';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 

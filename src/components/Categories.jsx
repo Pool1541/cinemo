@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { getPopular, getTopRated } from '../services/tmdbAPI';
+import { getPopular, getTopRated, getSelectedList } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { BsFillHeartFill, BsFillFileBarGraphFill } from 'react-icons/bs';
 import CategoriesList from './CategoriesList';
@@ -8,13 +8,19 @@ import { DataContext } from '../contexts/dataContext';
 function Categories() {
   const [selectionId, setSelectionId] = useState('popular');
 
-  const { setQueryValues, modal } = useContext(DataContext);
+  const { setQueryValues, modal, setMovie } = useContext(DataContext);
 
   function handleClick(id) {
-    console.log(id);
     setSelectionId(id);
     if (id === 'popular') setQueryValues({ fn: getPopular, key: ['popular'] });
-    else setQueryValues({ fn: getTopRated, key: ['toprated'] });
+    else if (id === 'toprated')
+      setQueryValues({ fn: getTopRated, key: ['toprated'] });
+    else
+      setQueryValues({
+        fn: () => getSelectedList({ id }),
+        key: ['selected', id],
+      });
+    setMovie('');
   }
 
   return (
@@ -43,6 +49,7 @@ function Categories() {
         <h4 className={styles.h4}>Generos</h4>
         <ul className={styles.list}>
           <CategoriesList
+            handleClick={handleClick}
             selectionID={selectionId}
             selectionIDFn={setSelectionId}
           />

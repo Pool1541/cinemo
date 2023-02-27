@@ -7,10 +7,13 @@ import GridContainer from 'components/GridContainer';
 import Categories from 'components/Categories';
 import Navbar from 'components/Navbar';
 import { AboutPage } from 'components/AboutPage';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import AuthProvider from 'components/AuthProvider';
+import { MovieInfo } from 'components/MovieInfo';
+import { DataContext } from 'contexts/dataContext';
 
 export default function Home() {
+  const { movieId } = useContext(DataContext);
   const [state, setState] = useState(0);
   const [user, setUser] = useState(null);
 
@@ -40,6 +43,7 @@ export default function Home() {
           <Categories />
         </Aside>
         <MainContainer>
+          {movieId && <MovieInfo movieId={movieId} />}
           <GridContainer />
         </MainContainer>
       </Main>

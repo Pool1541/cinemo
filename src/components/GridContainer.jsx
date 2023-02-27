@@ -6,6 +6,7 @@ import SkeletonCard from './SkeletonCard';
 import { useContext } from 'react';
 import { DataContext } from 'contexts/dataContext';
 import Button from './Button';
+import ResultsNotFound from 'components/ResultsNotFound';
 
 export default function GridContainer() {
   const { peliculas, isSuccess, setQueryValues } = useContext(DataContext);
@@ -35,6 +36,9 @@ export default function GridContainer() {
     ));
   };
 
+  if (peliculas?.results?.length === 0) {
+    return <ResultsNotFound />;
+  }
   return (
     <>
       <div className={styles.gridContainer}>
