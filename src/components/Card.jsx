@@ -15,18 +15,24 @@ export default function Card({ movie = {} }) {
   }
 
   return (
-    <a onClick={handleClick} className={styles.container}>
+    <button onClick={handleClick} className={styles.container}>
       <div className={styles.image}>
-        <img
-          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-          alt={movie.title}
-          loading='lazy'
-        />
+        <picture>
+          <source
+            srcSet={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+            media='(max-width: 425px)'
+          />
+          <img
+            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            alt={movie.title}
+            loading='lazy'
+          />
+        </picture>
       </div>
       <div className={styles.info}>
         <h2>{movie.title}</h2>
         <Rating votes={movie.vote_average} />
       </div>
-    </a>
+    </button>
   );
 }

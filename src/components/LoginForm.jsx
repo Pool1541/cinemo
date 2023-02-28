@@ -63,7 +63,7 @@ export default function LoginForm() {
         <div className={styles.registered}>
           <p>
             ¿Aún no tienes una cuenta?{' '}
-            <a onClick={handleRegisterModal}>Registrate</a>
+            <button onClick={handleRegisterModal}>Registrate</button>
           </p>
         </div>
         <div className={styles.buttons}>
@@ -74,7 +74,7 @@ export default function LoginForm() {
         </div>
       </form>
       <div className={styles.imageBox}>
-        <img src={require('assets/banner.png')} alt='movies banner' />
+        <img src={require('assets/banner2.webp')} alt='movies banner' />
       </div>
     </div>
   );
