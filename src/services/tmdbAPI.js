@@ -10,8 +10,14 @@ const tmdbAPI = axios.create({
 
 export const getMovies = async movieId => {
   const response = await tmdbAPI.get(
-    `/movie/${movieId}?&language=es-spa&page=1&append_to_response=credits,recommendations`
+    `/movie/${movieId}?&language=es-spa&append_to_response=credits,recommendations&page=1`
   );
+  return setLinks(response);
+};
+
+export const getRecommended = async movieId => {
+  const response = await tmdbAPI.get(`/movie/${movieId}/recommendations`);
+
   return setLinks(response);
 };
 

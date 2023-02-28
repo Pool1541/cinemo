@@ -8,10 +8,12 @@ import { DataContext } from '../contexts/dataContext';
 function Categories() {
   const [selectionId, setSelectionId] = useState('popular');
 
-  const { setQueryValues, modal, setMovie } = useContext(DataContext);
+  const { setQueryValues, modal, setMovie, setMovieId } =
+    useContext(DataContext);
 
   function handleClick(id) {
     setSelectionId(id);
+
     if (id === 'popular') setQueryValues({ fn: getPopular, key: ['popular'] });
     else if (id === 'toprated')
       setQueryValues({ fn: getTopRated, key: ['toprated'] });
@@ -21,6 +23,7 @@ function Categories() {
         key: ['selected', id],
       });
     setMovie('');
+    setMovieId('');
   }
 
   return (

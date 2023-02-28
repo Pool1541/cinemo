@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AiFillGithub, AiFillHome } from 'react-icons/ai';
+import { AiFillGithub } from 'react-icons/ai';
 import styles from '../styles/components/aboutPage.module.css';
+import ButtonHome from 'components/ButtonHome';
 
 const About = () => {
   return (
@@ -28,11 +29,7 @@ const About = () => {
         </Link>
       </p>
 
-      <Link to={'/'}>
-        <button className={styles.btn}>
-          <AiFillHome /> back to home
-        </button>
-      </Link>
+      <ButtonHome />
     </div>
   );
 };

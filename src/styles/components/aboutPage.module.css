@@ -44,22 +44,3 @@
   color: var(--action);
   padding-bottom: -3px;
 }
-
-.btn {
-  background-color: var(--secondary);
-  color: var(--action);
-  padding: 1rem 2rem;
-  cursor: pointer;
-  border: 1px solid var(--action);
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
-  border-radius: 8px;
-}
-
-.btn:hover {
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
-}
-
-.btn:active {
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
-}

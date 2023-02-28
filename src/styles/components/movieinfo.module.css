@@ -1,7 +1,4 @@
 .container {
-  position: relative;
-  flex: 1 1 auto;
-  margin-bottom: 40%;
   width: 100%;
   padding: 4rem;
 }
@@ -27,13 +24,12 @@
 /* storyline */
 
 .poster {
-  width: 30%;
+  max-width: 200px;
   height: 100%;
 }
 
 .storylineCotnainer {
   display: flex;
-  background-color: aquamarine;
 }
 
 .storylineInfo {
@@ -52,4 +48,59 @@
 .genres {
   display: flex;
   gap: 0.5rem;
+}
+
+/* carousel */
+
+.carouselContainer {
+  overflow: hidden;
+}
+
+.carouselList {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.carouselBox {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 95%;
+  transition: 0.2s all ease-in;
+  cursor: pointer;
+}
+
+.carouselBox picture {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: auto;
+}
+
+.carouselBox > p {
+  display: inline-block;
+  margin: 0 auto;
+  color: var(--title);
+  font-size: 16px;
+}
+
+.carouselBox p:last-child {
+  color: var(--text-transparent);
+}
+
+.carouselImg {
+  transition: 0.2s all ease-in;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.carouselImg:hover {
+  transform: scale(1.1);
+}
+
+.carouselImg:active {
+  transform: scale(1);
 }
