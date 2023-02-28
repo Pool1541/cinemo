@@ -63,7 +63,9 @@ export default function LoginForm() {
         <div className={styles.registered}>
           <p>
             ¿Aún no tienes una cuenta?{' '}
-            <button onClick={handleRegisterModal}>Registrate</button>
+            <button type='button' onClick={handleRegisterModal}>
+              Registrate
+            </button>
           </p>
         </div>
         <div className={styles.buttons}>
