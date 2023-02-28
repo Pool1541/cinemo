@@ -18,12 +18,12 @@ function App() {
       <Suspense fallback={<Spinner />}>
         <Router>
           <Routes>
-            <Route path='/movies-app/' element={<Home />} />
-            <Route path='/movies-app/login' element={<Login />} />
-            <Route path='/movies-app/*' element={<NotFound />} />
-            <Route path='/movies-appnotFound' element={<NotFound />} />
-            <Route path='/movies-app/settings' element={<UserSettings />} />
-            <Route path='/movies-app/about' element={<About />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/*' element={<NotFound />} />
+            <Route path='notFound' element={<NotFound />} />
+            <Route path='/settings' element={<UserSettings />} />
+            <Route path='/about' element={<About />} />
           </Routes>
         </Router>
       </Suspense>
