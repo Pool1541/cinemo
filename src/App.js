@@ -16,7 +16,7 @@ function App() {
   return (
     <div className='App'>
       <Suspense fallback={<Spinner />}>
-        <HashRouter>
+        <HashRouter basename='/movies-app'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
