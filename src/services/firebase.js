@@ -8,8 +8,6 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import {
-  addDoc,
-  collection,
   doc,
   getDoc,
   getFirestore,
