@@ -1,21 +1,11 @@
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { lazy, Suspense, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { auth, loginUser } from 'services/firebase';
+import { loginUser, loginWithGoogle } from 'services/firebase';
 import styles from 'styles/components/loginForm.module.css';
 import Spinner from './Spinner';
 
 export default function LoginForm() {
   const errorMessage = useRef();
-  const provider = new GoogleAuthProvider();
-
-  async function loginWithGoogle() {
-    try {
-      const user = await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();

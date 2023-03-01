@@ -3,7 +3,9 @@ import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from 'firebase/auth';
 import {
   addDoc,
@@ -42,6 +44,17 @@ const db = getFirestore(app);
 // Instancia de cloud storage
 
 const storage = getStorage(app);
+
+// Autenticación con google
+
+export async function loginWithGoogle() {
+  try {
+    const provider = new GoogleAuthProvider();
+    const user = await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // Registro de usuarios con correo y contraseña
 
