@@ -1,23 +1,14 @@
 import { DataContext } from 'contexts/dataContext';
+import useFecthMovieData from 'hooks/useFetchMovieData';
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getMovies } from 'services/tmdbAPI';
 import { setRating } from 'utilities/setRating';
 import styles from '../styles/components/movieinfo.module.css';
 import Rating from './Rating';
 
 export const MovieInfo = () => {
-  const { movieId, setMovie, movie, setQueryValues, peliculas } =
-    useContext(DataContext);
-
-  useEffect(() => {
-    const loadMovie = async () => {
-      const result = await getMovies(movieId);
-      setMovie(result);
-    };
-    loadMovie();
-  }, [movieId]);
-
-  console.log(movie);
+  const { movieData: movie, isLoading } = useFecthMovieData();
 
   // runtime en hora y min / revenue
   const duration = movie?.runtime;
@@ -127,6 +118,7 @@ export const MovieInfo = () => {
             </div>
           </div>
         </div>
+        <div>Info</div>
       </div>
     );
 };

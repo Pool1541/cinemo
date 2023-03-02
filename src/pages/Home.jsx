@@ -7,12 +7,10 @@ import GridContainer from 'components/GridContainer';
 import Categories from 'components/Categories';
 import Navbar from 'components/Navbar';
 import { AboutPage } from 'components/AboutPage';
-import { useContext, useState } from 'react';
-import { MovieInfo } from 'components/MovieInfo';
-import { DataContext } from 'contexts/dataContext';
+import { Outlet, useParams } from 'react-router-dom';
 
 export default function Home() {
-  const { movieId } = useContext(DataContext);
+  const { movieId } = useParams();
 
   return (
     <div>
@@ -24,8 +22,7 @@ export default function Home() {
           <Categories />
         </Aside>
         <MainContainer>
-          {movieId && <MovieInfo movieId={movieId} />}
-          <GridContainer />
+          {movieId ? <Outlet /> : <GridContainer />}
         </MainContainer>
       </Main>
       <Footer>

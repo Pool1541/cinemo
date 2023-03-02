@@ -12,6 +12,7 @@ const Login = lazy(() => import('pages/Login'));
 const NotFound = lazy(() => import('pages/NotFound'));
 const About = lazy(() => import('pages/About'));
 const UserSettings = lazy(() => import('pages/UserSettings'));
+const MovieView = lazy(() => import('pages/MovieView'));
 
 function App() {
   // /* basename='/movies-app */
@@ -19,7 +20,9 @@ function App() {
     <div className='App'>
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />}>
+            <Route path='movies/:movieId' element={<MovieView />} />
+          </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/*' element={<NotFound />} />
           <Route path='notFound' element={<NotFound />} />

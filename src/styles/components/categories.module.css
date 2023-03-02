@@ -19,17 +19,28 @@
   list-style: none;
 }
 
-.listItem {
+.listButton {
   text-decoration: none;
-  color: var(--text);
   position: relative;
-  font-size: 0.75rem;
   margin-bottom: 0.5rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
   align-items: center;
   font-family: inherit;
+}
+
+.listItem {
+  text-decoration: none;
+  position: relative;
+  margin-bottom: 0.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  align-items: center;
+  font-family: inherit;
+  font-size: 0.75rem;
+  color: var(--text);
 }
 
 .listItem::after {
@@ -74,7 +85,7 @@ h4 {
 /* active link */
 
 .activeLink {
-  color: var(--contrast);
+  color: var(--contrast) !important;
 }
 
 .activeLink::after {

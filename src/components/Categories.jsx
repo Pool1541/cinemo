@@ -4,6 +4,7 @@ import styles from '../styles/components/categories.module.css';
 import { BsFillHeartFill, BsFillFileBarGraphFill } from 'react-icons/bs';
 import CategoriesList from './CategoriesList';
 import { DataContext } from '../contexts/dataContext';
+import { Link } from 'react-router-dom';
 
 function Categories() {
   const [selectionId, setSelectionId] = useState('popular');
@@ -30,20 +31,30 @@ function Categories() {
         <div className={styles.list}>
           <button
             onClick={() => handleClick('popular')}
-            className={`${styles.listItem} ${
-              selectionId === 'popular' ? styles.activeLink : ''
-            }`}
+            className={styles.listButton}
           >
-            <BsFillHeartFill className={styles.iconalign} /> Populares
+            <Link
+              to={'/'}
+              className={`${styles.listItem} ${
+                selectionId === 'popular' ? styles.activeLink : ''
+              }`}
+            >
+              <BsFillHeartFill className={styles.iconalign} /> Populares{' '}
+            </Link>
           </button>
 
           <button
             onClick={() => handleClick('toprated')}
-            className={`${styles.listItem} ${
-              selectionId === 'toprated' ? styles.activeLink : ''
-            }`}
+            className={styles.listButton}
           >
-            <BsFillFileBarGraphFill className={styles.iconalign} /> Top Rated
+            <Link
+              to={'/'}
+              className={`${styles.listItem} ${
+                selectionId === 'toprated' ? styles.activeLink : ''
+              }`}
+            >
+              <BsFillFileBarGraphFill className={styles.iconalign} /> Top Rated
+            </Link>
           </button>
         </div>
         <h4 className={styles.h4}>Generos</h4>
