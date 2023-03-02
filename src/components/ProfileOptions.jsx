@@ -1,21 +1,11 @@
 import styles from 'styles/components/profileOptions.module.css';
 import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { BsGear } from 'react-icons/bs';
-import { logout } from 'services/firebase';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
 
 export default function ProfileOptions({ username }) {
-  const navigate = useNavigate();
-  const currentLocation = useLocation();
-
-  function handleLogout() {
-    logout()
-      .then(() => {
-        if (currentLocation.pathname === '/') location.reload();
-        else navigate('/');
-      })
-      .catch(error => console.error(error));
-  }
+  const { onLogout } = useAuth();
 
   return (
     <div className={styles.options}>
@@ -34,7 +24,7 @@ export default function ProfileOptions({ username }) {
           </Link>
         </li>
         <li>
-          <Link className={styles.optionItem} onClick={handleLogout}>
+          <Link className={styles.optionItem} onClick={onLogout}>
             <CgLogOut />
             Logout
           </Link>

@@ -4,11 +4,7 @@ import styles from 'styles/components/card.module.css';
 import Rating from './Rating';
 
 export default function Card({ movie = {} }) {
-  // const { setQueryValues } = useContext(DataContext);
   const { setMovieId } = useContext(DataContext);
-  // function handleClick() {
-  //   setQueryValues({ fn: getTopRated, key: 'peliculas' });
-  // }
 
   function handleClick() {
     setMovieId(movie.id);

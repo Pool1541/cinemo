@@ -5,9 +5,12 @@ import { BiSearch } from 'react-icons/bi';
 import { getSearchResults } from '../services/tmdbAPI';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
+import useUserData from 'hooks/useUserData';
+import SpinnerForImg from './SpinnerForImg';
 
-function NavbarButton({ user }) {
+function NavbarButton() {
   const { modal, setModal, setQueryValues, setMovie } = useContext(DataContext);
+  const { userData, isLoading } = useUserData();
   const [text, setText] = useState('');
 
   function handleClick(e) {
@@ -56,8 +59,10 @@ function NavbarButton({ user }) {
         </button>
       </form>
       <div className={styles.loginContainer}>
-        {user ? (
-          <UserProfile user={user} />
+        {isLoading ? (
+          <SpinnerForImg />
+        ) : userData ? (
+          <UserProfile user={userData} />
         ) : (
           <Link className={styles.loginBtn} to='/login'>
             Iniciar sesión

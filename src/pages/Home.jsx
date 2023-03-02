@@ -8,35 +8,16 @@ import Categories from 'components/Categories';
 import Navbar from 'components/Navbar';
 import { AboutPage } from 'components/AboutPage';
 import { useContext, useState } from 'react';
-import AuthProvider from 'components/AuthProvider';
 import { MovieInfo } from 'components/MovieInfo';
 import { DataContext } from 'contexts/dataContext';
 
 export default function Home() {
   const { movieId } = useContext(DataContext);
-  const [state, setState] = useState(0);
-  const [user, setUser] = useState(null);
 
-  function handleUserLoggedIn(user) {
-    setUser(user);
-    setState(2);
-  }
-
-  function handleUserNotLoggedIn() {
-    setState(3);
-  }
-
-  if (state === 0)
-    return (
-      <AuthProvider
-        onUserLoggedIn={handleUserLoggedIn}
-        onUserNotLoggedIn={handleUserNotLoggedIn}
-      ></AuthProvider>
-    );
   return (
     <div>
       <Header>
-        <Navbar user={user} />
+        <Navbar />
       </Header>
       <Main>
         <Aside>

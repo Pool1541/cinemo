@@ -2,9 +2,10 @@
 // import Login from 'pages/Login';
 // import { NotFound } from 'pages/NotFound';
 // import { About } from 'pages/About';
+import Guard from 'guards/Guard';
 import Spinner from 'components/Spinner';
 import { lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
@@ -17,16 +18,21 @@ function App() {
   return (
     <div className='App'>
       <Suspense fallback={<Spinner />}>
-        <HashRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/*' element={<NotFound />} />
-            <Route path='notFound' element={<NotFound />} />
-            <Route path='/settings' element={<UserSettings />} />
-            <Route path='/about' element={<About />} />
-          </Routes>
-        </HashRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/*' element={<NotFound />} />
+          <Route path='notFound' element={<NotFound />} />
+          <Route
+            path='/settings'
+            element={
+              <Guard>
+                <UserSettings />
+              </Guard>
+            }
+          />
+          <Route path='/about' element={<About />} />
+        </Routes>
       </Suspense>
     </div>
   );
