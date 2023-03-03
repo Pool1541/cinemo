@@ -46,9 +46,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--secondary);
-  scroll-behavior: smooth;
 }
 
 .App > div {

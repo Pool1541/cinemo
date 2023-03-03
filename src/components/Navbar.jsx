@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { DataContext } from '../contexts/dataContext';
 import { BiSearch } from 'react-icons/bi';
 import { getSearchResults } from '../services/tmdbAPI';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import useUserData from 'hooks/useUserData';
 import SpinnerForImg from './SpinnerForImg';
@@ -12,6 +12,7 @@ function NavbarButton() {
   const { modal, setModal, setQueryValues, setMovie } = useContext(DataContext);
   const { userData, isLoading } = useUserData();
   const [text, setText] = useState('');
+  const navigate = useNavigate();
 
   function handleClick(e) {
     setModal(!modal);
@@ -30,6 +31,7 @@ function NavbarButton() {
       fn: () => getSearchResults(text.replace(/ /g, '+')),
       key: ['searchResults', text],
     });
+    navigate('/');
     setText('');
     setMovie('');
   }

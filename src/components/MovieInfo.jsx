@@ -1,9 +1,4 @@
-import { DataContext } from 'contexts/dataContext';
 import useFecthMovieData from 'hooks/useFetchMovieData';
-import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getMovies } from 'services/tmdbAPI';
-import { setRating } from 'utilities/setRating';
 import styles from '../styles/components/movieinfo.module.css';
 import Rating from './Rating';
 
@@ -22,7 +17,7 @@ export const MovieInfo = () => {
 
   function toCurrency(amount) {
     const revenue = amount;
-    const dollars = (revenue / 100).toLocaleString('en-US', {
+    const dollars = revenue.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',
     });
@@ -118,7 +113,6 @@ export const MovieInfo = () => {
             </div>
           </div>
         </div>
-        <div>Info</div>
       </div>
     );
 };
