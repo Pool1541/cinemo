@@ -1,5 +1,6 @@
 import useFecthMovieData from 'hooks/useFetchMovieData';
 import styles from '../styles/components/movieinfo.module.css';
+import Actions from './Actions';
 import Rating from './Rating';
 
 export const MovieInfo = () => {
@@ -41,6 +42,7 @@ export const MovieInfo = () => {
               <div className={styles.overview}>
                 <p>{movie.overview}</p>
               </div>
+              <Actions />
             </div>
           </div>
           <div className={styles.backgroundImage}>

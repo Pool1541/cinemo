@@ -6,6 +6,10 @@ import Guard from 'guards/Guard';
 import Spinner from 'components/Spinner';
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Dashboard from 'pages/Dashboard';
+import ListsView from 'pages/ListsView';
+import RatingsView from 'pages/RatingsView';
+import DiscussionsView from 'pages/DiscussionsView';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
@@ -34,6 +38,21 @@ function App() {
               </Guard>
             }
           />
+          <Route
+            path='/dashboard'
+            element={
+              <Guard>
+                <Dashboard />
+              </Guard>
+            }
+          >
+            <Route path='/dashboard/lists' element={<ListsView />} />
+            <Route
+              path='/dashboard/discussions'
+              element={<DiscussionsView />}
+            />
+            <Route path='/dashboard/ratings' element={<RatingsView />} />
+          </Route>
           <Route path='/about' element={<About />} />
         </Routes>
       </Suspense>

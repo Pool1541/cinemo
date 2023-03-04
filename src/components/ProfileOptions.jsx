@@ -12,21 +12,21 @@ export default function ProfileOptions({ username }) {
       <p className={styles.displayName}>Bienvenido {username}</p>
       <ul className={styles.optionsList}>
         <li>
-          <Link className={styles.optionItem}>
+          <Link className={styles.optionItem} to='/dashboard'>
             <CgProfile />
-            Profile
+            Perfil
           </Link>
         </li>
         <li>
           <Link className={styles.optionItem} to='/settings'>
             <BsGear />
-            Settings
+            Ajuster
           </Link>
         </li>
         <li>
           <Link className={styles.optionItem} onClick={onLogout}>
             <CgLogOut />
-            Logout
+            Salir
           </Link>
         </li>
       </ul>
