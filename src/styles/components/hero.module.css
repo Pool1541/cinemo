@@ -1,0 +1,68 @@
+.container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background: var(--secondary);
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background: url('assets/icons/bg.svg');
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 80%;
+  display: flex;
+  gap: 40px;
+}
+
+.profilePhoto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profilePhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--text);
+}
+
+.about h2 {
+  color: var(--title);
+  font-size: 2rem;
+}
+
+.about span {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 1020px) {
+  .container {
+    height: 400px;
+  }
+  .content {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .about {
+    flex-direction: column;
+    gap: 0;
+  }
+}

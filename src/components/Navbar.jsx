@@ -3,12 +3,16 @@ import { useContext, useState } from 'react';
 import { DataContext } from '../contexts/dataContext';
 import { BiSearch } from 'react-icons/bi';
 import { getSearchResults } from '../services/tmdbAPI';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from './UserProfile';
+import useUserData from 'hooks/useUserData';
+import SpinnerForImg from './SpinnerForImg';
 
-function NavbarButton({ user }) {
+function NavbarButton() {
   const { modal, setModal, setQueryValues, setMovie } = useContext(DataContext);
+  const { userData, isLoading } = useUserData();
   const [text, setText] = useState('');
+  const navigate = useNavigate();
 
   function handleClick(e) {
     setModal(!modal);
@@ -27,6 +31,7 @@ function NavbarButton({ user }) {
       fn: () => getSearchResults(text.replace(/ /g, '+')),
       key: ['searchResults', text],
     });
+    navigate('/');
     setText('');
     setMovie('');
   }
@@ -56,8 +61,10 @@ function NavbarButton({ user }) {
         </button>
       </form>
       <div className={styles.loginContainer}>
-        {user ? (
-          <UserProfile user={user} />
+        {isLoading ? (
+          <SpinnerForImg />
+        ) : userData ? (
+          <UserProfile user={userData} />
         ) : (
           <Link className={styles.loginBtn} to='/login'>
             Iniciar sesión

@@ -1,21 +1,18 @@
 import { DataContext } from 'contexts/dataContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styles from 'styles/components/card.module.css';
 import Rating from './Rating';
 
 export default function Card({ movie = {} }) {
-  // const { setQueryValues } = useContext(DataContext);
   const { setMovieId } = useContext(DataContext);
-  // function handleClick() {
-  //   setQueryValues({ fn: getTopRated, key: 'peliculas' });
-  // }
 
   function handleClick() {
     setMovieId(movie.id);
   }
 
   return (
-    <button onClick={handleClick} className={styles.container}>
+    <Link to={`/movies/${movie.id}`} className={styles.container}>
       <div className={styles.image}>
         <picture>
           <source
@@ -33,6 +30,6 @@ export default function Card({ movie = {} }) {
         <h2>{movie.title}</h2>
         <Rating votes={movie.vote_average} />
       </div>
-    </button>
+    </Link>
   );
 }

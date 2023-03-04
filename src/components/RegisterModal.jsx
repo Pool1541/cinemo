@@ -1,45 +1,21 @@
 import styles from 'styles/components/registerModal.module.css';
 import { IoMdClose } from 'react-icons/io';
-import { createUser, registerUser } from 'services/firebase';
 import { useRef } from 'react';
+import useAuth from 'hooks/useAuth';
 
-export default function RegisterModal({ root, id }) {
+export default function RegisterModal({ handleClose }) {
   const errorMessage = useRef();
-  function handleClose() {
-    root.unmount();
-    document.getElementById(id).remove();
-  }
+  const { registerError: error, onRegister } = useAuth();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    const complete = Object.entries(data).every(value => value[1] !== '');
-
-    if (complete)
-      try {
-        const userCredential = await registerUser({
-          email: data.email,
-          password: data.password,
-        });
-        delete data.password;
-        await createUser({
-          ...data,
-          creationTime: Date.now(),
-          photoURL:
-            'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-          uid: userCredential.user.uid,
-        });
-        handleClose();
-      } catch (error) {
-        errorMessage.current.innerText = error.code.split('/')[1];
-      }
-    else errorMessage.current.innerText = 'Completa todos los campos';
-  }
+  if (error && errorMessage.current)
+    errorMessage.current.innerText = error.replaceAll('-', ' ');
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={styles.form}
+        onSubmit={e => onRegister(e).then(res => res && handleClose())}
+      >
         <h2>Registrate</h2>
         <label htmlFor='name'>Nombre</label>
         <input type='text' id='name' name='name' />

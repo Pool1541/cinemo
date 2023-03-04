@@ -3,11 +3,11 @@ import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from 'firebase/auth';
 import {
-  addDoc,
-  collection,
   doc,
   getDoc,
   getFirestore,
@@ -43,6 +43,14 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
+// Autenticación con google
+
+export async function loginWithGoogle() {
+  const provider = new GoogleAuthProvider();
+  const userCredential = await signInWithPopup(auth, provider);
+  return userCredential;
+}
+
 // Registro de usuarios con correo y contraseña
 
 export async function registerUser({ email, password }) {
@@ -74,13 +82,34 @@ export async function logout() {
 
 export async function createUser(user) {
   const docRef = doc(db, 'users', user.uid);
+  const docListRef = doc(db, 'lists', user.uid);
   await setDoc(docRef, user);
+  await setDoc(docListRef, {
+    creationTime: Date.now(),
+    uid: user.uid,
+    lists: [],
+  });
+}
+
+// Crear una lista en la DB
+
+export async function createList(uid, list) {
+  const docRef = doc(db, 'lists', uid);
+  await setDoc(docRef, list);
 }
 
 // Obtener la información de un usuario en la DB
 
 export async function getUserData(uid) {
   const docRef = doc(db, 'users', uid);
+  const docSnap = await getDoc(docRef);
+  return docSnap.data();
+}
+
+// Obtener la información de una lista
+
+export async function getLists(uid) {
+  const docRef = doc(db, 'lists', uid);
   const docSnap = await getDoc(docRef);
   return docSnap.data();
 }

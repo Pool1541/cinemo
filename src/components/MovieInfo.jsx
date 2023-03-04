@@ -1,23 +1,10 @@
-import { DataContext } from 'contexts/dataContext';
-import React, { useContext, useEffect } from 'react';
-import { getMovies } from 'services/tmdbAPI';
-import { setRating } from 'utilities/setRating';
+import useFecthMovieData from 'hooks/useFetchMovieData';
 import styles from '../styles/components/movieinfo.module.css';
+import Actions from './Actions';
 import Rating from './Rating';
 
 export const MovieInfo = () => {
-  const { movieId, setMovie, movie, setQueryValues, peliculas } =
-    useContext(DataContext);
-
-  useEffect(() => {
-    const loadMovie = async () => {
-      const result = await getMovies(movieId);
-      setMovie(result);
-    };
-    loadMovie();
-  }, [movieId]);
-
-  console.log(movie);
+  const { movieData: movie, isLoading } = useFecthMovieData();
 
   // runtime en hora y min / revenue
   const duration = movie?.runtime;
@@ -31,7 +18,7 @@ export const MovieInfo = () => {
 
   function toCurrency(amount) {
     const revenue = amount;
-    const dollars = (revenue / 100).toLocaleString('en-US', {
+    const dollars = revenue.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',
     });
@@ -55,6 +42,7 @@ export const MovieInfo = () => {
               <div className={styles.overview}>
                 <p>{movie.overview}</p>
               </div>
+              <Actions />
             </div>
           </div>
           <div className={styles.backgroundImage}>
