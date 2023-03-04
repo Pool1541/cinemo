@@ -20,7 +20,7 @@ export default function ProfileOptions({ username }) {
         <li>
           <Link className={styles.optionItem} to='/settings'>
             <BsGear />
-            Ajuster
+            Ajustes
           </Link>
         </li>
         <li>

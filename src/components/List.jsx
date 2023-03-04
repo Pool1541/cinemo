@@ -6,7 +6,7 @@ export default function List({ data }) {
   return (
     <div className={styles.listContainer}>
       <div className={styles.background}>
-        <img src='https://image.tmdb.org/t/p/w1280/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg' />
+        <img src={data.background} />
       </div>
       <div className={styles.content}>
         <Link to='/dashboard/lists/:listID'>

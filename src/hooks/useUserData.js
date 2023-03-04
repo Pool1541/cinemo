@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createUser, getUserData } from 'services/firebase';
+import { createListsObj, createUser, getUserData } from 'services/firebase';
 import useAuth from './useAuth';
 
 export default function useUserData() {
@@ -30,6 +30,12 @@ export default function useUserData() {
             photoURL:
               'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
           };
+          const newListsObj = {
+            creationTime: Date.now(),
+            lists: [],
+            uid: auth.uid,
+          };
+          await createListsObj(auth.uid, newListsObj);
           await createUser(newUser);
           setUserData(newUser);
         }

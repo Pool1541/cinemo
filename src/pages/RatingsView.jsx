@@ -1,3 +1,5 @@
+import EmptyView from 'components/EmptyView';
+
 export default function RatingsView() {
-  return <div>RatingView</div>;
+  return <EmptyView />;
 }

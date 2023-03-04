@@ -2,6 +2,7 @@ import CinemoLogo from 'assets/CinemoLogo';
 import { AboutPage } from 'components/AboutPage';
 import DashboardContent from 'components/DashboardContent';
 import DashboardOptions from 'components/DashboardOptions';
+import EmptyView from 'components/EmptyView';
 import Hero from 'components/Hero';
 import SpinnerForImg from 'components/SpinnerForImg';
 import UserProfile from 'components/UserProfile';
@@ -29,7 +30,7 @@ export default function Dashboard() {
           <Hero isLoading={isLoading} userData={userData} />
           <DashboardContent>
             <DashboardOptions />
-            {path ? <></> : <Outlet />}
+            {path ? <EmptyView /> : <Outlet />}
           </DashboardContent>
         </div>
       </Main>

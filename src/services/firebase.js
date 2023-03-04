@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import {
+  arrayUnion,
   doc,
   getDoc,
   getFirestore,
@@ -93,7 +94,7 @@ export async function createUser(user) {
 
 // Crear una lista en la DB
 
-export async function createList(uid, list) {
+export async function createListsObj(uid, list) {
   const docRef = doc(db, 'lists', uid);
   await setDoc(docRef, list);
 }
@@ -119,6 +120,15 @@ export async function getLists(uid) {
 export async function updateUserData(uid, data) {
   const docRef = doc(db, 'users', uid);
   await updateDoc(docRef, data);
+}
+
+// Agregar una lista al documento de un usuario
+
+export async function addList(uid, data) {
+  const docRef = doc(db, 'lists', uid);
+  await updateDoc(docRef, {
+    lists: arrayUnion(data),
+  });
 }
 
 /* Funciones de cloud storage */
