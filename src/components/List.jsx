@@ -9,7 +9,7 @@ export default function List({ data }) {
         <img src={data.background} />
       </div>
       <div className={styles.content}>
-        <Link to='/dashboard/lists/:listID'>
+        <Link to={`/dashboard/lists/${data.listID}`}>
           <h2>{data.title}</h2>
         </Link>
         <div className={styles.meta}>

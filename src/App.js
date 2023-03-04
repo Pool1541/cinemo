@@ -10,6 +10,7 @@ import Dashboard from 'pages/Dashboard';
 import ListsView from 'pages/ListsView';
 import RatingsView from 'pages/RatingsView';
 import DiscussionsView from 'pages/DiscussionsView';
+import ListView from 'pages/ListView';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
@@ -47,6 +48,7 @@ function App() {
             }
           >
             <Route path='/dashboard/lists' element={<ListsView />} />
+            <Route path='/dashboard/lists/:listID' element={<ListView />} />
             <Route
               path='/dashboard/discussions'
               element={<DiscussionsView />}
