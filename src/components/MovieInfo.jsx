@@ -1,10 +1,13 @@
 import useFecthMovieData from 'hooks/useFetchMovieData';
+import scrollToTop from 'utilities/scrollToTop';
 import styles from '../styles/components/movieinfo.module.css';
 import Actions from './Actions';
 import Rating from './Rating';
 
 export const MovieInfo = () => {
   const { movieData: movie, isLoading } = useFecthMovieData();
+
+  scrollToTop();
 
   // runtime en hora y min / revenue
   const duration = movie?.runtime;
