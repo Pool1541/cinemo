@@ -1,0 +1,81 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #0000004d;
+  display: flex;
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.container {
+  width: 60%;
+  min-width: 250px;
+  max-width: 300px;
+  min-height: 150px;
+  max-height: 60vh;
+  margin-top: 60px;
+  padding: 20px 20px 0 20px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top h3 {
+  font-size: 1.2rem;
+  color: var(--title);
+}
+
+.top button {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  padding-top: 5px;
+}
+
+.top svg {
+  color: var(--title);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.top button:hover svg {
+  color: var(--error);
+}
+
+.form {
+  margin-top: 20px;
+  padding: 0 10px 0 0;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.addList {
+  width: 100%;
+  font-size: 0.9rem;
+  justify-content: flex-start;
+  cursor: pointer;
+  border: none;
+  background-color: unset;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 15px;
+  transition: color 0.2s ease;
+}
+
+.addList:hover {
+  color: var(--title);
+}

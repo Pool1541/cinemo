@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { getMovies } from 'services/tmdbAPI';
 
-export default function useFecthMovieData(id) {
+export default function useFecthMovieData() {
   const { movieId } = useParams();
   const {
     data: movieData,

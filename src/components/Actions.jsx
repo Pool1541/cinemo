@@ -5,38 +5,55 @@ import { addList } from 'services/firebase';
 import useAuth from 'hooks/useAuth';
 import { uuidv4 } from '@firebase/util';
 import useFecthMovieData from 'hooks/useFetchMovieData';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import AddMovieToList from './AddMovieToList';
 
 export default function Actions() {
   const { auth } = useAuth();
   const { movieData } = useFecthMovieData();
+  const [modalIsOpen, setModalIsOpen] = useState();
+  const navigate = useNavigate();
 
-  console.log(movieData);
-
-  async function handleClick() {
-    const movie = {
-      creationTime: Date.now(),
-      listID: uuidv4(),
-      public: true,
-      title: 'Primera lista',
-      background: `https://image.tmdb.org/t/p/w780${movieData.backdrop_path}`,
-      movies: [
-        {
-          movieID: movieData.id,
-          rating: null,
-          review: '',
-          status: false,
-        },
-      ],
-    };
-    await addList(auth.uid, movie);
+  function LauncherModal() {
+    if (!auth) {
+      navigate('/login');
+      return;
+    }
+    setModalIsOpen(!modalIsOpen);
   }
+
+  // async function handleClick() {
+  //   if (!auth) {
+  //     navigate('/login');
+  //     return;
+  //   }
+
+  //   const movie = {
+  //     creationTime: Date.now(),
+  //     listID: uuidv4(),
+  //     public: true,
+  //     title: 'Primera lista',
+  //     background: `https://image.tmdb.org/t/p/w780${movieData.backdrop_path}`,
+  //     movies: [
+  //       {
+  //         movieID: movieData.id,
+  //         rating: null,
+  //         review: '',
+  //         status: false,
+  //       },
+  //     ],
+  //   };
+  //   await addList(auth.uid, movie);
+  // }
+
   return (
     <ul className={styles.actionsContainer}>
       <li>
         <button
           className={styles.actionsItem}
-          action={'Añadir a lista'}
-          onClick={handleClick}
+          action={'Agregar a lista'}
+          onClick={LauncherModal}
         >
           <RiPlayListAddFill />
         </button>
@@ -51,6 +68,7 @@ export default function Actions() {
           <AiOutlineStar />
         </button>
       </li>
+      {modalIsOpen ? <AddMovieToList handleClose={LauncherModal} /> : null}
     </ul>
   );
 }

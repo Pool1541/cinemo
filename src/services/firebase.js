@@ -131,6 +131,15 @@ export async function addList(uid, data) {
   });
 }
 
+// Agregar una película a una lista específica
+
+export async function changeList(uid, data) {
+  const docRef = doc(db, 'lists', uid);
+  await updateDoc(docRef, {
+    lists: data,
+  });
+}
+
 /* Funciones de cloud storage */
 
 // Subir un archivo tipo file a un bucket de storage
