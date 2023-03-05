@@ -112,13 +112,13 @@
 @media screen and (max-width: 900px) {
   .loginContainer {
     max-width: 500px;
-    grid-template-columns: unset;
+    grid-template-columns: 1fr;
     background-color: var(--primary-transparent);
     backdrop-filter: blur(3px);
   }
 
   .formBox {
-    padding: 40px;
+    padding: 30px;
   }
 
   .imageBox {
