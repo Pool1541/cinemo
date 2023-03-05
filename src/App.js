@@ -20,7 +20,7 @@ const UserSettings = lazy(() => import('pages/UserSettings'));
 const MovieView = lazy(() => import('pages/MovieView'));
 
 function App() {
-  // /* basename='/movies-app */
+  // /* basename='/cinemo */
   return (
     <div className='App'>
       <Suspense fallback={<Spinner />}>
