@@ -30,14 +30,14 @@
   padding: 0 1rem;
 }
 
+.aboutText {
+  font-size: 0.8rem;
+}
+
 .aboutLink {
   color: var(--action);
   margin-left: 1rem;
-  font-size: 12px;
-}
-
-.aboutText {
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 .icon {
@@ -62,4 +62,11 @@
 
 .btn:active {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 620px) {
+  .aboutLink,
+  .aboutText {
+    font-size: 0.7rem;
+  }
 }

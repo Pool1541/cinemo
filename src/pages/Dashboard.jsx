@@ -10,7 +10,7 @@ import useUserData from 'hooks/useUserData';
 import Footer from 'layout/Footer';
 import Header from 'layout/Header';
 import Main from 'layout/Main';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import styles from 'styles/pages/dashboard.module.css';
 
 export default function Dashboard() {
@@ -22,6 +22,9 @@ export default function Dashboard() {
     <div>
       <Header>
         <nav>
+          <Link to='/' className={styles.logo}>
+            <CinemoLogo />
+          </Link>
           {isLoading ? <SpinnerForImg /> : <UserProfile user={userData} />}
         </nav>
       </Header>

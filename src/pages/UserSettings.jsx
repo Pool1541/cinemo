@@ -1,3 +1,4 @@
+import CinemoLogo from 'assets/CinemoLogo';
 import { AboutPage } from 'components/AboutPage';
 import Settings from 'components/Settings';
 import SettingsContainer from 'components/SettingsContainer';
@@ -7,7 +8,8 @@ import useUserData from 'hooks/useUserData';
 import Footer from 'layout/Footer';
 import Header from 'layout/Header';
 import Main from 'layout/Main';
-import 'styles/pages/userSettings.module.css';
+import { Link } from 'react-router-dom';
+import styles from 'styles/pages/userSettings.module.css';
 
 export default function UserSettings() {
   const { userData, isLoading } = useUserData();
@@ -15,7 +17,10 @@ export default function UserSettings() {
   return (
     <div>
       <Header>
-        <nav>
+        <nav className={styles.navBar}>
+          <Link to='/' className={styles.logo}>
+            <CinemoLogo />
+          </Link>
           {isLoading ? <SpinnerForImg /> : <UserProfile user={userData} />}
         </nav>
       </Header>

@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import useUserData from 'hooks/useUserData';
 import SpinnerForImg from './SpinnerForImg';
+import CinemoLogo from 'assets/CinemoLogo';
 
 function NavbarButton() {
   const { modal, setModal, setQueryValues, setMovie } = useContext(DataContext);
@@ -47,7 +48,9 @@ function NavbarButton() {
         <div className={styles.linea2}></div>
         <div className={styles.linea3}></div>
       </button>
-
+      <Link to='/' className={styles.logo}>
+        <CinemoLogo />
+      </Link>
       <form onSubmit={handleSubmit} className={styles.searchBar}>
         <input
           onChange={e => setText(e.target.value)}

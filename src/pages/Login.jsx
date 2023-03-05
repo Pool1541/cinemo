@@ -1,3 +1,4 @@
+import CinemoLogo from 'assets/CinemoLogo';
 import LoginForm from 'components/LoginForm';
 import useAuth from 'hooks/useAuth';
 import Header from 'layout/Header';
@@ -15,8 +16,8 @@ export default function Login() {
     <>
       <Header>
         <div className={styles.btnHome}>
-          <Link to={'/'} className={styles.link}>
-            Inicio
+          <Link to='/' className={styles.logo}>
+            <CinemoLogo />
           </Link>
         </div>
       </Header>
