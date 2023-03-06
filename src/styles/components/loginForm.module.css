@@ -57,7 +57,7 @@
 }
 
 .registered {
-  text-align: end;
+  text-align: center;
 }
 
 .registered button {
@@ -118,7 +118,9 @@
   }
 
   .formBox {
-    padding: 30px;
+    padding: 0;
+    width: 90%;
+    margin: auto;
   }
 
   .imageBox {
@@ -126,8 +128,8 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+/* @media screen and (max-width: 375px) {
   .formBox {
     padding: 25px 20px;
   }
-}
+} */
