@@ -1,13 +1,18 @@
 import useAuth from 'hooks/useAuth';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from 'styles/components/loginForm.module.css';
 import RegisterModal from './RegisterModal';
 
 export default function LoginForm() {
   const { onLogin, onLoginWithGoogle, loginError: error } = useAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const loginRef = useRef();
+  const [width, setWith] = useState(innerWidth);
+  const [height, setHeight] = useState(innerHeight);
+  const [formWidth, setFormWidth] = useState();
+  console.log(formWidth);
 
-  const errorMessage = useRef(null);
+  const errorMessage = useRef();
 
   if (error && modalIsOpen === false)
     errorMessage.current.innerText = error.replaceAll('-', ' ');
@@ -34,8 +39,10 @@ export default function LoginForm() {
   function handleClose() {
     setModalIsOpen(false);
   }
-  const width = innerWidth;
-  const height = innerHeight;
+
+  useEffect(() => {
+    setFormWidth(loginRef.current.offsetWidth);
+  }, []);
 
   return (
     <>
@@ -45,7 +52,15 @@ export default function LoginForm() {
           background: 'White',
         }}
       >{`Width: ${width} - Height: ${height}`}</div>
-      <div className={styles.loginContainer}>
+      <div className={styles.loginContainer} ref={loginRef}>
+        <span
+          style={{
+            color: '#3fdb3f',
+            background: 'White',
+          }}
+        >
+          {formWidth}
+        </span>
         <form className={styles.formBox} onSubmit={onLogin}>
           <div className={styles.title}>
             <h1>Iniciar sesión</h1>
