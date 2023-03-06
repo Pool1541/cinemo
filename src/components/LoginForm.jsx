@@ -34,9 +34,17 @@ export default function LoginForm() {
   function handleClose() {
     setModalIsOpen(false);
   }
+  const width = innerWidth;
+  const height = innerHeight;
 
   return (
     <>
+      <div
+        style={{
+          color: '#3fdb3f',
+          background: 'White',
+        }}
+      >{`Width: ${width} - Height: ${height}`}</div>
       <div className={styles.loginContainer}>
         <form className={styles.formBox} onSubmit={onLogin}>
           <div className={styles.title}>
