@@ -15,7 +15,10 @@ export default function CreateListForm({ handleClose }) {
     data.public = data.public === 'public';
     const tempMovieData = {
       movieID: movieData.id,
-      rating: 0,
+      title: movieData.title,
+      poster_path: movieData.poster_path,
+      vote_average: movieData.vote_average,
+      MyRating: 0,
       review: '',
       status: false,
     };

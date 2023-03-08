@@ -9,6 +9,7 @@ import CreateListForm from './CreateListForm';
 
 export default function AddMovieToList({ handleClose }) {
   const { listsData, isLoading } = useListsData();
+  const { movieData } = useFecthMovieData();
   const [newList, setNewList] = useState(false);
 
   function handleClick() {
@@ -32,6 +33,7 @@ export default function AddMovieToList({ handleClose }) {
               key={list.listID}
               allLists={listsData}
               list={list}
+              movieData={movieData}
             />
           ))}
         </form>

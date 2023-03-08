@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { changeList } from 'services/firebase';
 import styles from 'styles/components/addMovieOption.module.css';
 
-export default function AddMovieOption({ list, allLists }) {
+export default function AddMovieOption({ list, allLists, movieData }) {
   const { auth } = useAuth();
   const { movieId } = useParams();
   const ref = useRef();
@@ -26,6 +26,9 @@ export default function AddMovieOption({ list, allLists }) {
     const temp = allLists.lists.find(item => item.listID === list.listID);
     const newMovieData = {
       movieID: parseInt(movieId),
+      title: movieData.title,
+      poster_path: movieData.poster_path,
+      vote_average: movieData.vote_average,
       rating: 0,
       review: '',
       status: false,
