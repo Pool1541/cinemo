@@ -1,0 +1,105 @@
+.container {
+  width: 85%;
+  height: 100%;
+  padding: 20px 0;
+}
+
+.info {
+  width: 100%;
+  padding: 20px 40px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.info p {
+  font-size: 0.85rem;
+  color: var(--primary-transparent);
+}
+
+.info button {
+  border: none;
+  background-color: var(--secondary-transparent);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.info button:hover {
+  color: var(--title);
+}
+
+.gridContainer {
+  width: 100%;
+  padding: 40px;
+  margin: auto;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gridContainer > a {
+  height: 400px;
+  max-width: 250px;
+}
+
+.resultsNotFound {
+  width: 85%;
+  height: 100%;
+  padding: 40px;
+}
+
+.resultsNotFound > div {
+  padding-top: 0;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.resultsNotFound > div > h2 {
+  font-size: 2rem;
+}
+
+.resultsNotFound > div > img {
+  width: 250px;
+  height: 250px;
+}
+
+.resultsNotFound > div > button {
+  display: none;
+}
+
+@media screen and (max-width: 1020px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gridContainer > a {
+    height: 300px;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(auto-fit, 150px);
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .gridContainer > a {
+    height: 250px;
+  }
+  .gridContainer {
+    grid-template-columns: repeat(auto-fit, 130px);
+    justify-content: space-around;
+    padding: 40px 20px;
+  }
+}

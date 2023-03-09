@@ -43,7 +43,6 @@ export default function Settings({ user }) {
       const file = files[0];
       const blob = await compressImage(file);
       const response = await setProfilePhoto(user.uid, blob);
-      console.log(blob);
       if (response) {
         const url = await getProfilePhotoUrl(response);
         await updateUserData(user.uid, { photoURL: url });

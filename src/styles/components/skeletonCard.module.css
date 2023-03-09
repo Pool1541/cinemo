@@ -1,5 +1,5 @@
 .container {
-  min-height: 500px;
+  min-height: 480px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 
 .image {
   border-radius: 5px 5px 0 0;
-  height: 80%;
+  height: 73%;
   overflow: hidden;
   position: relative;
   background-color: var(--primary);
@@ -26,6 +26,7 @@
 .info {
   flex: 1 1 auto;
   display: flex;
+  height: 27%;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;

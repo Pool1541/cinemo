@@ -3,9 +3,22 @@ import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { BsGear } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
+import { useEffect } from 'react';
 
-export default function ProfileOptions({ username }) {
+export default function ProfileOptions({ username, classname, handleClose }) {
   const { onLogout } = useAuth();
+
+  useEffect(() => {
+    function handleClick(e) {
+      const container = document.getElementsByClassName(classname)[0];
+      if (!container.contains(e.target)) {
+        handleClose();
+      }
+    }
+    window.addEventListener('click', handleClick);
+
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
 
   return (
     <div className={styles.options}>

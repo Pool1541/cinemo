@@ -30,9 +30,20 @@ export const getTopRated = async () => {
 };
 
 export const getSelectedList = async ({ id, url }) => {
+  let filter = {};
+  if (id === 10749) {
+    filter = {
+      params: {
+        certification_country: 'US',
+        certification: 'G',
+        without_genres: '16',
+      },
+    };
+  }
   const response = await tmdbAPI.get(
     url ||
-      `/discover/movie?&language=es-spa&sort_by=popularity.desc&with_genres=${id}&page=1`
+      `/discover/movie?&language=es-spa&sort_by=popularity.desc&with_genres=${id}&page=1`,
+    filter
   );
 
   return setLinks(response);

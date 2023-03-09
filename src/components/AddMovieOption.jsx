@@ -11,7 +11,7 @@ export default function AddMovieOption({ list, allLists, movieData }) {
 
   function checked() {
     list.movies.forEach(movie => {
-      if (movie.movieID === parseInt(movieId)) {
+      if (movie.id === parseInt(movieId)) {
         ref.current.checked = true;
       }
     });
@@ -25,7 +25,7 @@ export default function AddMovieOption({ list, allLists, movieData }) {
   async function addMovie() {
     const temp = allLists.lists.find(item => item.listID === list.listID);
     const newMovieData = {
-      movieID: parseInt(movieId),
+      id: parseInt(movieId),
       title: movieData.title,
       poster_path: movieData.poster_path,
       vote_average: movieData.vote_average,
@@ -35,16 +35,12 @@ export default function AddMovieOption({ list, allLists, movieData }) {
     };
     temp.movies.push(newMovieData);
     await changeList(auth.uid, allLists.lists);
-    console.log('Se ha agregado: ', movieId);
   }
 
   async function removeMovie() {
     const temp = allLists.lists.find(item => item.listID === list.listID);
-    temp.movies = temp.movies.filter(
-      movie => movie.movieID !== parseInt(movieId)
-    );
+    temp.movies = temp.movies.filter(movie => movie.id !== parseInt(movieId));
     await changeList(auth.uid, allLists.lists);
-    console.log('Se ha removido: ', movieId);
   }
 
   useEffect(() => {
