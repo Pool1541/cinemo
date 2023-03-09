@@ -11,7 +11,6 @@ import AddMovieToList from './AddMovieToList';
 
 export default function Actions() {
   const { auth } = useAuth();
-  const { movieData } = useFecthMovieData();
   const [modalIsOpen, setModalIsOpen] = useState();
   const navigate = useNavigate();
 

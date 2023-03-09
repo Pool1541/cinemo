@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { getPopular, getTopRated, getSelectedList } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { BsFillHeartFill, BsFillFileBarGraphFill } from 'react-icons/bs';
@@ -9,7 +9,26 @@ import { Link } from 'react-router-dom';
 function Categories() {
   const [selectionId, setSelectionId] = useState('popular');
 
-  const { setQueryValues, modal, setMovie } = useContext(DataContext);
+  const { setQueryValues, modal, setModal, setMovie } = useContext(DataContext);
+
+  useEffect(() => {
+    function closeAside(e) {
+      const sideBar = document.querySelector(`.${styles.background}`);
+      const burgerIcon = document.getElementById('burgerIcon');
+      if (
+        modal &&
+        innerWidth <= 1000 &&
+        !sideBar.contains(e.target) &&
+        !burgerIcon.contains(e.target)
+      ) {
+        setModal(!modal);
+      }
+    }
+
+    document.addEventListener('click', closeAside);
+
+    return () => document.removeEventListener('click', closeAside);
+  }, [modal]);
 
   function handleClick(id) {
     setSelectionId(id);

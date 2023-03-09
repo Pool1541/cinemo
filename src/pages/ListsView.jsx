@@ -4,7 +4,6 @@ import styles from 'styles/pages/listsView.module.css';
 
 export default function ListsView() {
   const { listsData, isLoading } = useListsData();
-  console.log(listsData);
 
   if (isLoading) return <></>;
 

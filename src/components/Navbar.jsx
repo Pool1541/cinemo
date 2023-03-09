@@ -17,8 +17,6 @@ function NavbarButton() {
 
   function handleClick(e) {
     setModal(!modal);
-
-    e.currentTarget.classList.toggle(styles.toggle);
   }
 
   function handleSubmit(e) {
@@ -41,8 +39,9 @@ function NavbarButton() {
     <div className={styles.navbar}>
       <button
         onClick={handleClick}
-        className={styles.navButton}
+        className={`${styles.navButton} ${modal ? styles.toggle : null}`}
         title='Mostrar categorias'
+        id='burgerIcon'
       >
         <div className={styles.linea1}></div>
         <div className={styles.linea2}></div>

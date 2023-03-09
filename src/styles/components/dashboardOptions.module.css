@@ -1,5 +1,6 @@
 .aside {
-  width: 250px;
+  width: 15%;
+  min-width: 230px;
 }
 
 .options {

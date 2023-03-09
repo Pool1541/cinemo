@@ -14,8 +14,11 @@ export default function CreateListForm({ handleClose }) {
     const data = Object.fromEntries(formData);
     data.public = data.public === 'public';
     const tempMovieData = {
-      movieID: movieData.id,
-      rating: 0,
+      id: movieData.id,
+      title: movieData.title,
+      poster_path: movieData.poster_path,
+      vote_average: movieData.vote_average,
+      MyRating: 0,
       review: '',
       status: false,
     };
@@ -30,7 +33,6 @@ export default function CreateListForm({ handleClose }) {
     try {
       await addList(auth.uid, newList);
       handleClose();
-      console.log('Lista agregada con éxito');
     } catch (error) {
       console.error(error);
     }
