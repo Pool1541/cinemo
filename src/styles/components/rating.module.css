@@ -32,3 +32,10 @@
   height: 100%;
   background-color: var(--contrast);
 }
+
+@media screen and (max-width: 450px) {
+  .container div {
+    width: 15px;
+    height: 15px;
+  }
+}

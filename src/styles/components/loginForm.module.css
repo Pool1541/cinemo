@@ -60,15 +60,16 @@
   text-align: center;
 }
 
-.registered p,
-.registered a {
-  font-size: 0.8rem;
+.registered button {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  color: var(--action);
 }
 
-.registered a {
-  cursor: pointer;
-  transition: color 0.3s ease;
-  color: var(--action);
+.registered p,
+.registered button {
+  font-size: 0.8rem;
 }
 
 .buttons {

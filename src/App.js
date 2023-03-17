@@ -4,7 +4,7 @@
 // import { About } from 'pages/About';
 import Spinner from 'components/Spinner';
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
@@ -13,10 +13,11 @@ const About = lazy(() => import('pages/About'));
 const UserSettings = lazy(() => import('pages/UserSettings'));
 
 function App() {
+  // /* basename='/movies-app */
   return (
     <div className='App'>
       <Suspense fallback={<Spinner />}>
-        <Router>
+        <HashRouter>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
@@ -25,7 +26,7 @@ function App() {
             <Route path='/settings' element={<UserSettings />} />
             <Route path='/about' element={<About />} />
           </Routes>
-        </Router>
+        </HashRouter>
       </Suspense>
     </div>
   );

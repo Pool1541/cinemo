@@ -1,106 +1,234 @@
 .container {
+  position: relative;
+  flex: 1 1 auto;
   width: 100%;
-  padding: 4rem;
 }
 
 .infoContainer {
-  width: 60%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 566px;
   color: var(--title);
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 5rem;
+  flex-direction: row;
 }
 
-.infoContainer p > span {
-  color: var(--primary);
-  margin-right: 1rem;
+/* Movie info */
+
+.info {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.absoluteInfo {
+  position: absolute;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  min-width: 450px;
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.meta span {
+  font-size: 0.8rem;
+}
+
+.overview p {
+  font-size: 0.8rem;
+}
+
+/* Background */
+
+.backgroundImage {
+  z-index: -1;
+  overflow: hidden;
+  width: 70%;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.backgroundImage::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--secondary) 0,
+    transparent 50%,
+    transparent 0
+  );
+}
+
+.backgroundImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* storyline */
-
-.poster {
-  max-width: 200px;
-  height: 100%;
-}
-
 .storylineCotnainer {
   display: flex;
+  background-color: var(--primary);
+  padding: 40px 40px;
+  color: var(--text);
+}
+
+.poster {
+  width: 30%;
+  min-width: 320px;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sinopsis {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .storylineInfo {
-  margin: 0 2rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+  gap: 10px;
+}
+
+.storylineInfo h3 {
+  color: var(--title);
+  font-size: 1.3rem;
 }
 
 .storylineList {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.storylineTitle {
+  width: 25%;
+  min-width: 100px;
+  color: var(--title);
 }
 
 .storylineItem {
-  margin-bottom: 0.7rem;
   display: flex;
+}
+
+.storylineItem > div {
+  font-size: 0.9rem;
 }
 
 .genres {
   display: flex;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.9rem;
 }
 
-/* carousel */
-
-.carouselContainer {
-  overflow: hidden;
+.genres > div {
+  font-size: 0.9rem;
 }
 
-.carouselList {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+@media screen and (max-width: 1250px) {
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .sinopsis {
+    font-size: 0.75rem;
+    margin-bottom: 20px;
+  }
+
+  .storylineInfo {
+    padding: 0 0 0 40px;
+  }
+
+  .storylineInfo h3 {
+    color: var(--title);
+    font-size: 1rem;
+  }
+
+  .storylineItem > div,
+  .genres,
+  .genres > div,
+  .meta span,
+  .overview p {
+    font-size: 0.75rem;
+  }
 }
 
-.carouselBox {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 95%;
-  transition: 0.2s all ease-in;
-  cursor: pointer;
-}
+@media screen and (max-width: 700px) {
+  .infoContainer {
+    flex-direction: column-reverse;
+    min-height: unset;
+  }
 
-.carouselBox picture {
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: auto;
-}
+  .info {
+    width: 100%;
+    padding: 20px;
+  }
 
-.carouselBox > p {
-  display: inline-block;
-  margin: 0 auto;
-  color: var(--title);
-  font-size: 16px;
-}
+  .absoluteInfo {
+    position: static;
+    width: 100%;
+    min-width: unset;
+  }
 
-.carouselBox p:last-child {
-  color: var(--text-transparent);
-}
+  .overview,
+  .poster {
+    display: none;
+  }
 
-.carouselImg {
-  transition: 0.2s all ease-in;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
+  .backgroundImage {
+    width: 100%;
+  }
 
-.carouselImg:hover {
-  transform: scale(1.1);
-}
+  .backgroundImage::after {
+    background: linear-gradient(
+      to top,
+      #213c54 0,
+      transparent 70%,
+      transparent 0%
+    );
+  }
 
-.carouselImg:active {
-  transform: scale(1);
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .meta {
+    flex-wrap: wrap;
+  }
+
+  .storylineCotnainer {
+    padding: 20px;
+  }
+
+  .storylineInfo {
+    padding: unset;
+    flex: 1 1 auto;
+  }
 }
