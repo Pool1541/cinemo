@@ -232,3 +232,56 @@
     flex: 1 1 auto;
   }
 }
+
+/* carousel */
+
+.carouselContainer {
+  overflow: scroll;
+  padding: 1rem;
+  margin: 1rem 2rem;
+}
+
+.carousel {
+  display: flex;
+  max-width: calc(100vw - 500px);
+  gap: 1rem;
+  list-style: none;
+}
+
+.link:link,
+.link:visited {
+  text-decoration: none;
+  color: var(--title);
+}
+
+.link picture {
+  object-fit: cover;
+}
+
+.link picture img {
+  display: block;
+  border-radius: 8px;
+  transition: all 0.2s ease-in;
+  width: calc(0.11 * 100vw);
+  min-width: 150px;
+}
+
+.link:hover picture img {
+  transform: scale(1.1);
+}
+
+.imgBox {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.name {
+  font-size: 15px;
+}
+
+.character {
+  font-size: 13px;
+}

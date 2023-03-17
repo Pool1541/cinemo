@@ -44,8 +44,6 @@ export const MovieInfo = () => {
     return dollars;
   }
 
-  const photoCheck = movie?.credits?.cast[27].profile_path;
-
   if (movie)
     return (
       <div className={styles.container}>
@@ -135,9 +133,32 @@ export const MovieInfo = () => {
           </div>
         </div>
 
-        {/* <picture className={styles.img}>
-        <img src={`https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`} />
-      </picture> */}
+        <div>
+          <h2>CAST</h2>
+          <div className={styles.carouselContainer}>
+            <ul className={styles.carousel}>
+              {movie.credits.cast.map(cast => (
+                <li key={cast.cast_id}>
+                  <a href='#' className={styles.link}>
+                    <picture className={styles.imgBox}>
+                      <img
+                        src={
+                          cast.profile_path
+                            ? `https://image.tmdb.org/t/p/w300${cast.profile_path}`
+                            : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
+                        }
+                      />
+                    </picture>
+                    <div>
+                      <h3 className={styles.name}>{cast.name}</h3>
+                      <p className={styles.character}>{cast.character}</p>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     );
 };
