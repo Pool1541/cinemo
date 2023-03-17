@@ -1,0 +1,34 @@
+.container {
+  flex: 1 1 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleList {
+  font-size: 1.3rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 10px;
+  min-height: 80%;
+}
+
+@media screen and (max-width: 1200px) {
+  .gridContainer {
+    place-content: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    padding: 20px;
+  }
+  .gridContainer {
+    place-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(80%, 450px));
+  }
+}

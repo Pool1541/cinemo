@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../styles/components/aboutPage.module.css';
+import styles from '../styles/pages/aboutPage.module.css';
 
 export const AboutPage = () => {
   const date = new Date().getFullYear();

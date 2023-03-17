@@ -92,8 +92,9 @@
 }
 
 .poster {
-  width: 30%;
   min-width: 320px;
+  max-height: 520px;
+  margin: auto;
 }
 
 .poster img {

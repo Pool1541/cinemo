@@ -1,23 +1,17 @@
-import { DataContext } from 'contexts/dataContext';
-import React, { useContext, useEffect } from 'react';
-import { getMovies, getRecommended } from 'services/tmdbAPI';
-import { setRating } from 'utilities/setRating';
+import useFecthMovieData from 'hooks/useFetchMovieData';
+import scrollToTop from 'utilities/scrollToTop';
 import styles from '../styles/components/movieinfo.module.css';
+import Actions from './Actions';
 import Rating from './Rating';
 
 export const MovieInfo = () => {
-  const { movieId, setMovie, movie, setQueryValues } = useContext(DataContext);
+  const { movieId, setMovie, movie, setQueryValues, peliculas } =
+    useContext(DataContext);
 
   useEffect(() => {
     const loadMovie = async () => {
       const result = await getMovies(movieId);
       setMovie(result);
-      if (result.recommendations.results.length > 0) {
-        setQueryValues({
-          fn: () => getRecommended(movieId),
-          key: ['Smovie', movieId],
-        });
-      }
     };
     loadMovie();
   }, [movieId]);
@@ -36,7 +30,7 @@ export const MovieInfo = () => {
 
   function toCurrency(amount) {
     const revenue = amount;
-    const dollars = (revenue / 100).toLocaleString('en-US', {
+    const dollars = revenue.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',
     });
@@ -60,6 +54,7 @@ export const MovieInfo = () => {
               <div className={styles.overview}>
                 <p>{movie.overview}</p>
               </div>
+              <Actions />
             </div>
           </div>
           <div className={styles.backgroundImage}>

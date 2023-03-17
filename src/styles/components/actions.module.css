@@ -1,0 +1,56 @@
+.actionsContainer {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.actionsItem {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 3px 3px 0;
+  background-color: transparent;
+  position: relative;
+}
+
+.actionsItem::after {
+  content: attr(action);
+  font-size: 0.7rem;
+  color: var(--text);
+  position: absolute;
+  bottom: -40px;
+  white-space: nowrap;
+  border-radius: 5px;
+  width: max-content;
+  padding: 10px 5px;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -50%;
+  opacity: 0;
+  background-color: var(--primary);
+  border: 1px solid var(--text-transparent);
+  transition: all 0.2s ease;
+}
+
+.actionsItem svg {
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.actionsItem:hover::after {
+  opacity: 1;
+}
+
+.actionsContainer li:first-child:hover svg {
+  color: rgb(57, 165, 236);
+}
+
+.actionsContainer li:nth-child(2):hover svg {
+  color: rgb(236, 57, 102);
+}
+
+.actionsContainer li:last-child:hover svg {
+  color: rgb(231, 229, 95);
+}

@@ -3,6 +3,8 @@ import App from './App';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles/layout/globalStyles.css';
 import DataContextProvider from './contexts/dataContext';
+import AuthContextProvider from 'contexts/authContext';
+import { HashRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,8 +17,12 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <QueryClientProvider client={queryClient}>
-    <DataContextProvider>
-      <App />
-    </DataContextProvider>
+    <HashRouter>
+      <AuthContextProvider>
+        <DataContextProvider>
+          <App />
+        </DataContextProvider>
+      </AuthContextProvider>
+    </HashRouter>
   </QueryClientProvider>
 );

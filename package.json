@@ -1,5 +1,6 @@
 {
-  "name": "movies-app",
+  "name": "cinemo",
+  "homepage": "https://pool1541.github.io/cinemo/#",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

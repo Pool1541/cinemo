@@ -1,50 +1,29 @@
-import AuthProvider from 'components/AuthProvider';
+import CinemoLogo from 'assets/CinemoLogo';
 import LoginForm from 'components/LoginForm';
-import Footer from 'layout/Footer';
+import useAuth from 'hooks/useAuth';
 import Header from 'layout/Header';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import styles from 'styles/pages/login.module.css';
 
 export default function Login() {
-  const [state, setState] = useState(0);
+  const { auth } = useAuth();
 
-  // 0 : inizializando.
-  // 1 : cargando
-  // 2 : login completo
-  // 3 : sin usuario logeado
-
-  const navigate = useNavigate();
-
-  function handleUserLoggedIn() {
-    navigate('/');
+  if (auth) {
+    return <Navigate to='/' replace />;
   }
 
-  function handleUserNotLoggedIn() {
-    setState(2);
-  }
-
-  if (state === 0)
-    return (
-      <AuthProvider
-        onUserLoggedIn={handleUserLoggedIn}
-        onUserNotLoggedIn={handleUserNotLoggedIn}
-      ></AuthProvider>
-    );
-
-  if (state === 2)
-    return (
-      <>
-        <Header>
-          <div className={styles.btnHome}>
-            <Link to={'/'} className={styles.link}>
-              Inicio
-            </Link>
-          </div>
-        </Header>
-        <div className={`${styles.login} login`}>
-          <LoginForm />
+  return (
+    <>
+      <Header>
+        <div className={styles.btnHome}>
+          <Link to='/' className={styles.logo}>
+            <CinemoLogo />
+          </Link>
         </div>
-      </>
-    );
+      </Header>
+      <div className={`${styles.login} login`}>
+        <LoginForm />
+      </div>
+    </>
+  );
 }

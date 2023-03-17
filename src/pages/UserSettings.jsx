@@ -1,47 +1,32 @@
+import CinemoLogo from 'assets/CinemoLogo';
 import { AboutPage } from 'components/AboutPage';
-import AuthProvider from 'components/AuthProvider';
 import Settings from 'components/Settings';
 import SettingsContainer from 'components/SettingsContainer';
+import SpinnerForImg from 'components/SpinnerForImg';
 import UserProfile from 'components/UserProfile';
+import useUserData from 'hooks/useUserData';
 import Footer from 'layout/Footer';
 import Header from 'layout/Header';
 import Main from 'layout/Main';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from 'styles/pages/userSettings.module.css';
 
 export default function UserSettings() {
-  const [user, setUser] = useState(null);
-  const [state, setState] = useState(0);
-  const navigate = useNavigate();
-
-  function handleUserLoggedIn(user) {
-    setUser(user);
-    setState(2);
-  }
-
-  function handleUserNotLoggedIn() {
-    navigate('/');
-  }
-
-  if (state === 0)
-    return (
-      <AuthProvider
-        onUserLoggedIn={handleUserLoggedIn}
-        onUserNotLoggedIn={handleUserNotLoggedIn}
-      ></AuthProvider>
-    );
+  const { userData, isLoading } = useUserData();
 
   return (
     <div>
       <Header>
-        <nav>
-          <UserProfile user={user} />
+        <nav className={styles.navBar}>
+          <Link to='/' className={styles.logo}>
+            <CinemoLogo />
+          </Link>
+          {isLoading ? <SpinnerForImg /> : <UserProfile user={userData} />}
         </nav>
       </Header>
       <Main>
         <SettingsContainer>
-          <Settings user={user} />
+          {isLoading ? null : <Settings user={userData} />}
         </SettingsContainer>
       </Main>
       <Footer>

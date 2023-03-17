@@ -14,7 +14,13 @@ export default function UserProfile({ user }) {
       <button type='button' className={styles.profileBtn} onClick={handleClick}>
         <img src={user.photoURL} alt='imagen de perfil' />
       </button>
-      {options ? <ProfileOptions username={user.name} /> : null}
+      {options ? (
+        <ProfileOptions
+          username={user.name}
+          classname={styles.container}
+          handleClose={handleClick}
+        />
+      ) : null}
     </div>
   );
 }

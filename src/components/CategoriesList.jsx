@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import { getGenres } from '../services/tmdbAPI';
 import styles from '../styles/components/categories.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function CategoriesList({ handleClick, selectionID }) {
   //  solicitando data para crear Lista de generos
@@ -20,11 +21,16 @@ function CategoriesList({ handleClick, selectionID }) {
             <button
               id={cat.id}
               onClick={() => handleClick(cat.id)}
-              className={`${styles.listItem} ${
-                cat.id === selectionID ? styles.activeLink : ''
-              }`}
+              className={styles.listButton}
             >
-              <FaRegDotCircle className={styles.iconalign} /> {cat.name}
+              <Link
+                to={'/'}
+                className={`${styles.listItem} ${
+                  cat.id === selectionID ? styles.activeLink : ''
+                }`}
+              >
+                <FaRegDotCircle className={styles.iconalign} /> {cat.name}
+              </Link>
             </button>
           </li>
         ))}

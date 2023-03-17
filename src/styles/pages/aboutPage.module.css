@@ -30,17 +30,43 @@
   padding: 0 1rem;
 }
 
+.aboutText {
+  font-size: 0.8rem;
+}
+
 .aboutLink {
   color: var(--action);
   margin-left: 1rem;
-  font-size: 12px;
-}
-
-.aboutText {
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 .icon {
   color: var(--action);
   padding-bottom: -3px;
+}
+
+.btn {
+  background-color: var(--secondary);
+  color: var(--action);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 1px solid var(--action);
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.616);
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn:active {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 620px) {
+  .aboutLink,
+  .aboutText {
+    font-size: 0.7rem;
+  }
 }

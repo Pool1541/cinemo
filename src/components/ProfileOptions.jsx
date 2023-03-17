@@ -1,42 +1,45 @@
 import styles from 'styles/components/profileOptions.module.css';
 import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { BsGear } from 'react-icons/bs';
-import { logout } from 'services/firebase';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import { useEffect } from 'react';
 
-export default function ProfileOptions({ username }) {
-  const navigate = useNavigate();
-  const currentLocation = useLocation();
+export default function ProfileOptions({ username, classname, handleClose }) {
+  const { onLogout } = useAuth();
 
-  function handleLogout() {
-    logout()
-      .then(() => {
-        if (currentLocation.pathname === '/') location.reload();
-        else navigate('/');
-      })
-      .catch(error => console.error(error));
-  }
+  useEffect(() => {
+    function handleClick(e) {
+      const container = document.getElementsByClassName(classname)[0];
+      if (!container.contains(e.target)) {
+        handleClose();
+      }
+    }
+    window.addEventListener('click', handleClick);
+
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
 
   return (
     <div className={styles.options}>
       <p className={styles.displayName}>Bienvenido {username}</p>
       <ul className={styles.optionsList}>
         <li>
-          <Link className={styles.optionItem}>
+          <Link className={styles.optionItem} to='/dashboard'>
             <CgProfile />
-            Profile
+            Perfil
           </Link>
         </li>
         <li>
           <Link className={styles.optionItem} to='/settings'>
             <BsGear />
-            Settings
+            Ajustes
           </Link>
         </li>
         <li>
-          <Link className={styles.optionItem} onClick={handleLogout}>
+          <Link className={styles.optionItem} onClick={onLogout}>
             <CgLogOut />
-            Logout
+            Salir
           </Link>
         </li>
       </ul>

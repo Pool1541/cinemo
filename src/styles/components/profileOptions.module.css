@@ -1,5 +1,6 @@
 .options {
   user-select: auto;
+  border: 2px solid var(--secondary);
   position: absolute;
   display: flex;
   flex-direction: column;

@@ -1,0 +1,61 @@
+.newListForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 5px;
+  transform: scaleY(0);
+  opacity: 0;
+  animation: show 0.1s ease forwards;
+  transform-origin: top;
+}
+
+.newListForm input,
+.newListForm select,
+.newListForm button,
+.newListForm option {
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+  color: var(--text);
+  background-color: var(--primary);
+  margin: 5px 0;
+  transition: all 0.2s ease;
+}
+
+.newListForm label,
+.newListForm input,
+.newListForm select,
+.newListForm option {
+  font-size: 0.9rem;
+}
+
+.newListForm input::placeholder {
+  color: var(--text-transparent);
+}
+
+.newListName {
+  display: flex;
+  flex-direction: column;
+}
+
+.newListPrivacity {
+  display: flex;
+  flex-direction: column;
+}
+
+.newListCreate {
+  cursor: pointer;
+}
+
+.newListCreate:hover {
+  border-color: var(--title);
+  color: var(--title);
+}
+
+@keyframes show {
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
