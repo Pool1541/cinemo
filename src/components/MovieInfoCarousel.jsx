@@ -2,10 +2,15 @@ import styles from 'styles/components/movieInfoCarousel.module.css';
 import useFecthMovieData from 'hooks/useFetchMovieData';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-function MovieInfoCarousel() {
-  const { movieData: movie, isLoading } = useFecthMovieData();
+function MovieInfoCarousel({ movie }) {
+  // const { movieData: movie, isLoading } = useFecthMovieData();
+  const [movieInfo, setMovieInfo] = useState({});
+  useEffect(() => {
+    setMovieInfo(movie);
+  }, [movie]);
+
   const ulRef = useRef(null);
 
   function handleClickPrev() {
@@ -28,7 +33,7 @@ function MovieInfoCarousel() {
         <h2 className={styles.castTitle}>CAST</h2>
         <div className={styles.castContainer}>
           <ul className={styles.listContainer} ref={ulRef}>
-            {movie.credits.cast.map(actor => (
+            {movieInfo?.credits?.cast?.map(actor => (
               <li key={actor.cast_id} className={styles.listItem}>
                 <Link to={`/person/${actor.id}`} className={styles.castBox}>
                   <figure className={styles.castImgBox}>

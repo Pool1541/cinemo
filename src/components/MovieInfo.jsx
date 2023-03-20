@@ -5,6 +5,7 @@ import Actions from './Actions';
 import Rating from './Rating';
 import MovieInfoCarousel from './MovieInfoCarousel';
 import { useEffect, useState } from 'react';
+import RecomendedCarousel from './RecomendedCarousel';
 
 // runtime en hora y min
 
@@ -132,7 +133,9 @@ export const MovieInfo = () => {
           </div>
         </div>
         {/* carousel */}
-        <MovieInfoCarousel />
+        <MovieInfoCarousel movie={movie} />
+        {/* Recomended Carousel */}
+        <RecomendedCarousel movie={movie} />
       </div>
     );
 };
