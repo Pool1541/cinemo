@@ -10,7 +10,7 @@ import { AboutPage } from 'components/AboutPage';
 import { Outlet, useParams } from 'react-router-dom';
 
 export default function Home() {
-  const { movieId } = useParams();
+  const { movieId, personId } = useParams();
 
   return (
     <div>
@@ -22,7 +22,7 @@ export default function Home() {
           <Categories />
         </Aside>
         <MainContainer>
-          {movieId ? <Outlet /> : <GridContainer />}
+          {movieId || personId ? <Outlet /> : <GridContainer />}
         </MainContainer>
       </Main>
       <Footer>

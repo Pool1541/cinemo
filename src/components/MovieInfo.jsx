@@ -3,14 +3,13 @@ import scrollToTop from 'utilities/scrollToTop';
 import styles from '../styles/components/movieinfo.module.css';
 import Actions from './Actions';
 import Rating from './Rating';
+import MovieInfoCarousel from './MovieInfoCarousel';
+import { useEffect, useState } from 'react';
 
-export const MovieInfo = () => {
-  const { movieData: movie, isLoading } = useFecthMovieData();
+// runtime en hora y min
 
-  scrollToTop();
-
-  // runtime en hora y min / revenue
-  const duration = movie?.runtime;
+const getMovieDuration = runtime => {
+  const duration = runtime;
   let hours = Math.floor(duration / 60);
   let min = Math.round(duration % 60);
 
@@ -18,6 +17,20 @@ export const MovieInfo = () => {
     hours += 1;
     min -= 60;
   }
+  return { hours, min };
+};
+
+export const MovieInfo = () => {
+  const { movieData: movie, isLoading } = useFecthMovieData();
+  const [movieDuration, setMovieDuration] = useState({});
+
+  scrollToTop();
+
+  useEffect(() => {
+    movie?.runtime && setMovieDuration(getMovieDuration(movie.runtime));
+  }, [movie]);
+
+  // get revenue
 
   function toCurrency(amount) {
     const revenue = amount;
@@ -29,7 +42,7 @@ export const MovieInfo = () => {
     return dollars;
   }
 
-  if (movie)
+  if (!isLoading)
     return (
       <div className={styles.container}>
         <div className={styles.infoContainer}>
@@ -40,7 +53,7 @@ export const MovieInfo = () => {
                 <span>{<Rating votes={movie.vote_average} />}</span>
                 <span>{`${movie.vote_count} Reviews`}</span>
                 <span>{movie.release_date}</span>
-                <span>{`${hours}h:${min}min`}</span>
+                <span>{`${movieDuration.hours}h:${movieDuration.min}min`}</span>
               </div>
               <div className={styles.overview}>
                 <p>{movie.overview}</p>
@@ -95,7 +108,7 @@ export const MovieInfo = () => {
                 <li className={styles.storylineItem}>
                   <div className={styles.storylineTitle}>Runtime</div>
                   <div>
-                    {hours}h {min}min
+                    {movieDuration.hours}h {movieDuration.min}m
                   </div>
                 </li>
                 <li className={styles.storylineItem}>
@@ -118,6 +131,8 @@ export const MovieInfo = () => {
             </div>
           </div>
         </div>
+        {/* carousel */}
+        <MovieInfoCarousel />
       </div>
     );
 };

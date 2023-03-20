@@ -18,6 +18,7 @@ const NotFound = lazy(() => import('pages/NotFound'));
 const About = lazy(() => import('pages/About'));
 const UserSettings = lazy(() => import('pages/UserSettings'));
 const MovieView = lazy(() => import('pages/MovieView'));
+const PersonInfo = lazy(() => import('pages/PersonInfo'));
 
 function App() {
   // /* basename='/cinemo */
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}>
             <Route path='movies/:movieId' element={<MovieView />} />
+            <Route path='person/:personId' element={<PersonInfo />} />
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/*' element={<NotFound />} />

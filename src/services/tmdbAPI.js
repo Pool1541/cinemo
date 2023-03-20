@@ -62,3 +62,11 @@ export const getSearchResults = async movie => {
 
   return setLinks(response);
 };
+
+export const getPerson = async personId => {
+  const response = await tmdbAPI.get(
+    `/person/${personId}?&append_to_response=external_ids&language=es-spa`
+  );
+
+  return setLinks(response);
+};
