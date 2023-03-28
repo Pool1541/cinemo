@@ -36,37 +36,39 @@ function RecomendedCarousel({ movie }) {
               </button>
             </>
           )}
-          <h2 className={styles.castTitle}>PELICULAS RECOMENDADAS</h2>
-          <div className={styles.castContainer}>
-            {!condition <= 0 && (
-              <ul className={styles.listContainer} ref={ulRef}>
-                {movieRec?.recommendations?.results?.map(recMovie => (
-                  <li key={recMovie.id} className={styles.listItem}>
-                    <Link
-                      to={`/movies/${recMovie.id}`}
-                      className={styles.castBox}
-                    >
-                      <figure className={styles.castImgBox}>
-                        <img
-                          className={styles.castImg}
-                          src={
-                            recMovie.poster_path
-                              ? `https://image.tmdb.org/t/p/w300${recMovie.poster_path}`
-                              : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
-                          }
-                          alt={`Picture of ${recMovie.title}`}
-                        />
-                      </figure>
-                      <div className={styles.castInfo}>
-                        <p>{recMovie.title}</p>
-                        <p>{recMovie.release_date}</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          {!condition <= 0 && (
+            <>
+              <h2 className={styles.castTitle}>PELICULAS RECOMENDADAS</h2>
+              <div className={styles.castContainer}>
+                <ul className={styles.listContainer} ref={ulRef}>
+                  {movieRec?.recommendations?.results?.map(recMovie => (
+                    <li key={recMovie.id} className={styles.listItem}>
+                      <Link
+                        to={`/movies/${recMovie.id}`}
+                        className={styles.castBox}
+                      >
+                        <figure className={styles.castImgBox}>
+                          <img
+                            className={styles.castImg}
+                            src={
+                              recMovie.poster_path
+                                ? `https://image.tmdb.org/t/p/w300${recMovie.poster_path}`
+                                : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
+                            }
+                            alt={`Picture of ${recMovie.title}`}
+                          />
+                        </figure>
+                        <div className={styles.castInfo}>
+                          <p>{recMovie.title}</p>
+                          <p>{recMovie.release_date}</p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
       </div>
     );

@@ -36,34 +36,36 @@ function MovieInfoCarousel({ movie }) {
             </button>
           </>
         )}
-        <h2 className={styles.castTitle}>CAST</h2>
-        <div className={styles.castContainer}>
-          {condition > 0 && (
-            <ul className={styles.listContainer} ref={ulRef}>
-              {movieInfo?.credits?.cast?.map(actor => (
-                <li key={actor.cast_id} className={styles.listItem}>
-                  <Link to={`/person/${actor.id}`} className={styles.castBox}>
-                    <figure className={styles.castImgBox}>
-                      <img
-                        className={styles.castImg}
-                        src={
-                          actor.profile_path
-                            ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
-                            : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
-                        }
-                        alt={`Picture of ${actor.name}`}
-                      />
-                    </figure>
-                    <div className={styles.castInfo}>
-                      <p>{actor.name}</p>
-                      <p>{actor.character}</p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {condition > 0 && (
+          <>
+            <h2 className={styles.castTitle}>CAST</h2>
+            <div className={styles.castContainer}>
+              <ul className={styles.listContainer} ref={ulRef}>
+                {movieInfo?.credits?.cast?.map(actor => (
+                  <li key={actor.cast_id} className={styles.listItem}>
+                    <Link to={`/person/${actor.id}`} className={styles.castBox}>
+                      <figure className={styles.castImgBox}>
+                        <img
+                          className={styles.castImg}
+                          src={
+                            actor.profile_path
+                              ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
+                              : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
+                          }
+                          alt={`Picture of ${actor.name}`}
+                        />
+                      </figure>
+                      <div className={styles.castInfo}>
+                        <p>{actor.name}</p>
+                        <p>{actor.character}</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     );
   }
