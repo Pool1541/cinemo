@@ -44,6 +44,7 @@
 
 .castInfo {
   color: var(--text);
+  margin-bottom: 20px;
 }
 
 .castInfo p:last-child {
