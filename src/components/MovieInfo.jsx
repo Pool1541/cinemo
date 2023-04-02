@@ -65,15 +65,27 @@ export const MovieInfo = () => {
           <div className={styles.backgroundImage}>
             <picture>
               <source
-                srcSet={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
+                srcSet={
+                  movie?.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
+                    : 'https://placehold.co/400x200/000/000/?text=No image'
+                }
                 media='(max-width: 320px)'
               />
               <source
-                srcSet={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
+                srcSet={
+                  movie?.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
+                    : 'https://placehold.co/600x400/000/000/?text=No image'
+                }
                 media='(max-width: 780px)'
               />
               <img
-                src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+                src={
+                  movie.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+                    : 'https://placehold.co/600x400/000/000/?text=No image'
+                }
               />
             </picture>
           </div>
@@ -81,7 +93,11 @@ export const MovieInfo = () => {
         <div className={styles.storylineCotnainer}>
           <div className={styles.poster}>
             <img
-              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                  : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
+              }
               alt={`Poster de ${movie.title}`}
             />
           </div>

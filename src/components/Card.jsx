@@ -20,7 +20,11 @@ export default function Card({ movie = {} }) {
             media='(max-width: 425px)'
           />
           <img
-            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            src={`${
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                : 'https://via.placeholder.com/300x450?text=Image+Not+Found'
+            } `}
             alt={movie.title}
             loading='lazy'
           />
